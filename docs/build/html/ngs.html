@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introducción &mdash; documentación de Call me by your reads - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Call me by your reads
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Introducción</a></li>
+<li><a class="reference internal" href="#aspectos-generales-de-la-secuenciacion-masiva">Aspectos generales de la secuenciación masiva</a></li>
+<li><a class="reference internal" href="#como-se-obtiene-un-exoma">Cómo se obtiene un exoma?</a></li>
+<li><a class="reference internal" href="#evolucion-en-los-costos-de-secuenciacion-y-comparacion-de-plataformas">Evolución en los costos de secuenciación y comparación de plataformas</a></li>
+<li><a class="reference internal" href="#secuenciacion-illumina">Secuenciación Illumina</a></li>
+<li><a class="reference internal" href="#calidad-de-la-secuenciacion">Calidad de la secuenciación</a></li>
+<li><a class="reference internal" href="#fastqc">FastQC</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Call me by your reads</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introducción</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ngs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduccion">
+<h1>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>NGS es un término sombrilla que hace referencia a la última generación de tecnologías de secuenciación</p>
+<p>Actualmente hay tres generaciones de tecnologías de secuenciación disponibles de forma comercial</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><dl class="simple">
+<dt>Primera generación: secuenciación por terminación didesoxi</dt><dd><ul class="simple">
+<li><p>Secuenciación Sanger en geles de acrilamida</p></li>
+<li><p>Secuenciación Sanger en capilares</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Segunda generación: secuenciación por síntesis:</dt><dd><ul class="simple">
+<li><p>Roche 454</p></li>
+<li><p>Illumina</p></li>
+<li><p>Applied Biosystems SOLiD</p></li>
+<li><p>Ion Torren / Ion Proton</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Tercera generación: secuenciación por lectura directa de moléculas</dt><dd><ul class="simple">
+<li><p>PacBio</p></li>
+<li><p>Oxford Nanopore</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/generations.png"><img alt="_images/generations.png" src="_images/generations.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="aspectos-generales-de-la-secuenciacion-masiva">
+<h1>Aspectos generales de la secuenciación masiva<a class="headerlink" href="#aspectos-generales-de-la-secuenciacion-masiva" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Si bien las tecnologías de secuenciación son muy diversas, el principio es fundamentalmente el mismo:</p>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>Se obtiene el DNA genómico de la muestra</dt><dd><ul class="simple">
+<li><p>El tipo de muestra determina el procedimiento a emplear (kit, consumibles, equipo)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>El DNA genómico es fragmentado de forma semi-aleatoria</dt><dd><ul class="simple">
+<li><p>Fragmentación mecánica</p></li>
+<li><p>Fragmentación enzimática</p></li>
+</ul>
+<p>Los kits de secuenciación indican el tamaño de fragmento a obtener, para exoma y genoma éstos van de 300 a 800 bp</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Se ligan adaptadores a ambos lados de los fragmentos generados.</dt><dd><p>En este momento tenemos bibliotecas genómicas y dependiendo de su concentración pueden estar listas para secuenciar</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Se agregan más oligonucleótidos a ambos lados de los fragmentos generados.</dt><dd><ul class="simple">
+<li><p>Éste es un paso opcional pero común cuando se procesa más de una muestra por corrida</p></li>
+<li><p>En caso de no contar con la cantidad adecuada, se amplifican las bibliotecas mediante una reacción de PCR</p></li>
+</ul>
+<p>En este momento tenemos bibliotecas uniplex listas para combinarse y tener bibliotecas multiplex</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>La biblioteca multiplex se inmobiliza en una matriz:</dt><dd><ul class="simple">
+<li><p>Puede ser una superficie en el caso de Illumina, PacBio &amp; Nanopore</p></li>
+<li><p>Puede ser en perlas como en Ion Proton &amp; 454</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Se secuencian las bibliotecas multiplexeadas en el aparato</dt><dd><ul class="simple">
+<li><p>La configuración de la corrida es fundamental para obtener el mejor rendimiento de nuestros reactivos, de nuestra muestra y muy importante, de nuestros datos de secuenciación</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Es recomendable secuenciar por ambos lados las bibliotecas, ya que la información de un solo lado de la lectura (75-300 nt) puede perderse en la inmensidad del genoma (3Gbp en el caso de humano)
+Es recomendable secuenciar fragmentos largos medianamente espaciados (2x150 nt + 200) para maximizar el rendimiento de la corrida, esto lo determina el laboratorio de biología molecular, los Field Application Scientists y los kits de secuenciación</p>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<a class="reference internal image-reference" href="_images/ngs_commons.png"><img alt="_images/ngs_commons.png" src="_images/ngs_commons.png" style="width: 300px;" /></a>
+</div>
+<div class="section" id="como-se-obtiene-un-exoma">
+<h1>Cómo se obtiene un exoma?<a class="headerlink" href="#como-se-obtiene-un-exoma" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Un exoma usualmente se obtiene mediante captura de regiones específicas a través de sondas que hibridan mediante complementaridad de bases en las regiones correspondientes a los exones del organismo que estemos tratando</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Los kits de captura para exomas humanos constan de cientos de miles de sondas que hibridan específicamente con los exones de los &gt;20000 genes codificados en el genoma humano!</p>
+<a class="reference internal image-reference" href="_images/exome.png"><img alt="_images/exome.png" src="_images/exome.png" style="width: 600px;" /></a>
+</div>
+<p>Existen otras estrategias como la de amplificación, sin embargo éstas tienen un rendimiento considerablemente inferior al de captura, adicionalmente, pueden ser susceptibles de rearreglos (captura también es sensible a rearreglos, pero no se pierden las variantes presentes en las regiones rearregladas)</p>
+</div>
+<div class="section" id="evolucion-en-los-costos-de-secuenciacion-y-comparacion-de-plataformas">
+<h1>Evolución en los costos de secuenciación y comparación de plataformas<a class="headerlink" href="#evolucion-en-los-costos-de-secuenciacion-y-comparacion-de-plataformas" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="admonition-esta-figura-la-hemos-visto-hasta-el-cansancio-pero-que-significa admonition">
+<p class="admonition-title">Esta figura la hemos visto hasta el cansancio, pero… qué significa?</p>
+<a class="reference internal image-reference" href="_images/genome_cost.jpg"><img alt="_images/genome_cost.jpg" src="_images/genome_cost.jpg" style="width: 600px;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>La ley de Moore en realidad es aplicable a poder de cómputo vs costo vs tiempo. No obstante la genómica y la bioinformática van de la mano, de modo que si bien no es directamente aplicable, si podemos extrapolar la ley de Moore con respecto al costo esperado de la secuenciación de genomas.</p>
+<p>Esta imagen esencialmente nos indica que ahora es más fácil secuenciar genomas completos, y eso es tambien un aliciente para implementar metodologías de genoma o exoma completos por encima de las opciones de paneles específicos</p>
+</div>
+</div>
+<div class="admonition-y-el-rendimiento admonition">
+<p class="admonition-title">Y el rendimiento?</p>
+<a class="reference internal image-reference" href="_images/throughput.png"><img alt="_images/throughput.png" src="_images/throughput.png" style="width: 600px;" /></a>
+<p>No todas las plataformas entregan el mismo rendimiento, incluso si son baratas, por lo que es importante no solamente elegir el kit adecuado para obtener exomas o paneles específicos. Las distintas plataformas nos van a entregar throughputs diferentes, incluso dentro de la misma plataforma en diferentes versiones, la salida de los secuenciadores puede ser muy muy variada</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Para secuenciación masiva de genoma y de exoma, actualmente puede usarse Illumina, Ion Proton, PacBio o Nanopore, no obstante Illumina tiene ventajas notables sobre las demás plataformas:</p>
+<ul class="simple">
+<li><p>No es tan susceptible a errores en regiones homopoliméricas</p></li>
+<li><p>Tiene el throughput más alto de todas las tecnologías</p></li>
+<li><p>Tiene la relación más alta en costo beneficio en cuanto a costo por base secuenciada</p></li>
+<li><p>Tiene mayor número de certificaciones en aplicaciones clínicas y de investigación</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Pese a sus ventajas, Illumina tiene deficiencias a nivel de detección de variaciones estructurales:</p>
+<ul class="simple">
+<li><p>No permite la detección de rearreglos (la opción es Nanopore y PacBio)</p></li>
+<li><p>No permite la detección de expansiones con la resolución adecuada (Nanopore &gt; PacBio &gt; Ion Proton si pueden realizar esta tarea)</p></li>
+<li><p>No permite la resolución de regiones repetitivas (Nanopore y PacBio son la mejor opción)</p></li>
+</ul>
+</div>
+<p>Por lo anterior nos concentraremos en la tecnología Illumina para el llamado de variantes</p>
+</div>
+<div class="section" id="secuenciacion-illumina">
+<h1>Secuenciación Illumina<a class="headerlink" href="#secuenciacion-illumina" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Illumina es por mucho la principal plataforma de secuenciación masiva, no obstante las tecnologías de tercera generación pronto competirán con Illumina tanto en la clínica como en la investigación y en otras áreas en donde se apliquen estrategias de secuenciación</p>
+<a class="reference internal image-reference" href="_images/popularity.png"><img alt="_images/popularity.png" src="_images/popularity.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition-cual-es-la-quimica-en-la-secuenciacion-illumina admonition">
+<p class="admonition-title">Cúal es la química en la secuenciación Illumina?</p>
+<img alt="_images/illumina_seq.png" src="_images/illumina_seq.png" />
+<p>En la secuenciación illumina, cada fragmento se lee dos veces (una vez en <em>foward</em> y una más en <em>reverse</em>), en cada incorporación de nucleótidos, se llevan a cabo los siguientes pasos:</p>
+<ul class="simple">
+<li><p>Se incorpora un nucleótido marcado con un fluoróforo específico</p></li>
+<li><p>Se detiene transitoriamente la reacción</p></li>
+<li><p>Se excitan los fluoróforos presentes en los nucleótidos incorporados</p></li>
+<li><p>Se lee la emisión de luz correspondiente a cada nucleótido</p></li>
+<li><p>Las intensidades de cada spot son registradas y transformadas en secuencias de nucleótidos</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La intensidad de los spots estará intimamente ligada a la capacidad del detector de separar señales ruidosas y en consecuencia de entregarnos secuencias de calidad.</p>
+</div>
+</div>
+</div>
+<div class="section" id="calidad-de-la-secuenciacion">
+<h1>Calidad de la secuenciación<a class="headerlink" href="#calidad-de-la-secuenciacion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El detector de los secuenciadores Illumina es esencialmente una cámara muy grande (muy (seriously, muy)). Cómo hace para discriminar entre una señal ruidosa de una señal real?</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Estas son imagenes reales de reacciones de secuenciación</p>
+<a class="reference internal image-reference" href="_images/illumina_signal_to_noise.png"><img alt="_images/illumina_signal_to_noise.png" src="_images/illumina_signal_to_noise.png" style="width: 600px;" /></a>
+<p>La calidad de una reacción de secuenciación está en función de la capacidad del aparato de separar el ruido de una señal ruidosa.</p>
+</div>
+<div class="admonition-un-poco-de-historia-para-entender-la-calidad-de-las-secuencias admonition">
+<p class="admonition-title">Un poco de historia para entender la calidad de las secuencias</p>
+<img alt="_images/quality.png" src="_images/quality.png" />
+<p>Cuando hacemos secuenciación Sanger podemos distinguir facilmente cuando una secuencia es de mala calidad porque los picos se traslapan con la señal basal de la fluorescencia de los demás nucleótidos</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En secuenciación masiva ocurre similar pero lo podemos ver de una forma numérica</p>
+<img alt="_images/phred_scores.png" src="_images/phred_scores.png" />
+</div>
+<p>Incorporemos ahora nuestros Phred scores en una secuenciación tradicional</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 49%" />
+<col style="width: 51%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="_images/low_qual_chrom.png"><img alt="low qual chrom" src="_images/low_qual_chrom.png" style="height: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/high_qual_chrom.png"><img alt="high qual chrom" src="_images/high_qual_chrom.png" style="height: 150px;" /></a></p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Recordemos que en cómputo, cada caracter de un <em>string</em> pesa ~1 byte</p>
+<p>Cuando incorporamos los phred scores en un archivo, éste pesará por lo menos el doble si se trata de secuencias de baja calidad, y podría pesar hasta el triple cuando son secuencias de alta calidad</p>
+<p>Puedes identificar por qué?</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Esto no parece ser muy problemático, si partimos de lo anterior, una secuencia de 1000 nucleótidos no excederá 1 Kb y con calidades incluidas no excederá 3 Kb</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Pero en secuenciación masiva tenemos millones de secuencias! Entonces el tamaño si importa.</p>
+</div>
+</div>
+<div class="toggle admonition">
+<p class="admonition-title">Solución al problema de codificar los phred scores en NGS</p>
+<p>El código ASCII es una implementación internacional que codifica caracteres alfanuméricos en una estructura controlada, cada letra tiene un identificador único y es valido internacionalmente.</p>
+<p>Y esto cómo conecta con la calidad?</p>
+<p>Dado que cada caracter (1 byte) tiene un código numérico (llegando incluso a más de 100), podemos codificar números que midan 2 bytes, en caracteres que midan unicamente 1 byte</p>
+<a class="reference internal image-reference" href="_images/phred_scale.png"><img alt="_images/phred_scale.png" src="_images/phred_scale.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Sabiendo lo anterior, nuestro cromatograma lo podemos representar de la siguiente manera</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="_images/high_qual_chrom.png"><img alt="high qual chrom" src="_images/high_qual_chrom.png" style="height: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/high_qual_fastq.png"><img alt="high qual fastq" src="_images/high_qual_fastq.png" style="height: 150px;" /></a></p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-y-ahora-en-secuenciacion-masiva admonition">
+<p class="admonition-title">Y ahora en secuenciación masiva!</p>
+<img alt="_images/fastq_format.png" src="_images/fastq_format.png" />
+<p>Considerando que ya conocemos las equivalencias del código ASCII con la escala Phred, qué podrías decir de las secuencias anteriores?</p>
+<ul class="simple">
+<li><p>Son de buena calidad?</p></li>
+<li><p>Son de mala calidad?</p></li>
+</ul>
+<div class="toggle admonition">
+<p class="admonition-title">Solución</p>
+<p><strong>Existen distintos *offsets* de la escala Phred!</strong></p>
+<p>Es indispensable que consultes con tu centro de secuenciación cual es el <em>offset</em> en la escala Phred de tu reacción de secuenciación!</p>
+<img alt="_images/phred_scales.png" src="_images/phred_scales.png" />
+</div>
+</div>
+<div class="admonition-y-entonces-tenemos-fastq admonition">
+<p class="admonition-title">Y entonces tenemos fastq!</p>
+<p>El formato fastq es sumamente rico, ya que además de la secuencia, tenemos información de la calidad de la secuencia y más, mucho más</p>
+<img alt="_images/fastq_header.png" src="_images/fastq_header.png" />
+</div>
+</div>
+<div class="section" id="fastqc">
+<h1>FastQC<a class="headerlink" href="#fastqc" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Para nosotros poder examinar la calidad de nuestras secuencias, podemos medir directamente sus calidades en formato fastq, y para ello usaremos la aplicación FastQC.</p>
+<ul class="simple">
+<li><p>Es una aplicación escrita en Java que permite portabilidad, es decir, puede correr en Windows, Linux y OSX</p></li>
+<li><p>Cuenta con interfáz gráfica y también en línea de comandos</p></li>
+<li><p>Entrega reportes a manera de páginas web</p></li>
+</ul>
+<p>Sabiendo lo anterior, tomamos nuestra terminal, nos vamos a la carpeta del día 2 y ejecutamos FastQC</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<dl class="simple">
+<dt>En la carpeta del día 2, encontrarás archivos de secuenciación correspondientes al proyecto &quot;NextSeq 550: Nextera Flex for Enrichment (12-plex, NA12878) with TruSight One Expanded Panel&quot; Albergado en <a class="reference external" href="https://basespace.illumina.com/datacentral">Basespace</a></dt><dd><p>24 replicates of Coriell NA12878 were prepared using the Nextera Flex for Enrichment with TruSight One Expanded in 12-plex hybridizations with IDT for Illumina- Nextera UD Indexes, sequenced at 2x149 on NextSeq. Analysis was performed using the BaseSpace Enrichment app.</p>
+</dd>
+</dl>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+dia_01 dia_02 dia_03
+
+$ cd dia_02
+
+$ ls -lh
+total 648M
+-rwxrwxr-x 1 vflorelo bioinformatics  81M Sep 22 06:19 NA12878-TS1Exp-TiVAL3-rep5_S20_L001_R1_001.fastq.gz
+-rwxrwxr-x 1 vflorelo bioinformatics  82M Sep 22 06:19 NA12878-TS1Exp-TiVAL3-rep5_S20_L001_R2_001.fastq.gz
+-rwxrwxr-x 1 vflorelo bioinformatics  80M Sep 22 06:19 NA12878-TS1Exp-TiVAL3-rep5_S20_L002_R1_001.fastq.gz
+-rwxrwxr-x 1 vflorelo bioinformatics  81M Sep 22 06:19 NA12878-TS1Exp-TiVAL3-rep5_S20_L002_R2_001.fastq.gz
+-rwxrwxr-x 1 vflorelo bioinformatics  81M Sep 22 06:19 NA12878-TS1Exp-TiVAL3-rep5_S20_L003_R1_001.fastq.gz
+-rwxrwxr-x 1 vflorelo bioinformatics  82M Sep 22 06:19 NA12878-TS1Exp-TiVAL3-rep5_S20_L003_R2_001.fastq.gz
+-rwxrwxr-x 1 vflorelo bioinformatics  80M Sep 22 06:19 NA12878-TS1Exp-TiVAL3-rep5_S20_L004_R1_001.fastq.gz
+-rwxrwxr-x 1 vflorelo bioinformatics  82M Sep 22 06:19 NA12878-TS1Exp-TiVAL3-rep5_S20_L004_R2_001.fastq.gz
+
+
+$ file NA12878-TS1Exp-TiVAL3-rep5_S20_L001_R1_001.fastq.gz
+NA12878-TS1Exp-TiVAL3-rep5_S20_L001_R1_001.fastq.gz: gzip compressed data, was &quot;NA12878-TS1Exp-TiVAL3-rep5_S20_L001_R1_001.fastq&quot;, last modified: Sun Sep 20 21:12:05 2020, max compression, from Unix
+
+
+$ fastqc *.gz
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, @atgenomics, @vflorelo, @dianolasa, @zorbax
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .admonition-title").show();
+        $(".toggle .admonition-title").click(function() {
+            $(this).parent().children().not(".admonition-title").toggle(400);
+            $(this).parent().children(".admonition-title").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

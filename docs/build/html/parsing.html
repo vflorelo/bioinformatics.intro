@@ -1,0 +1,1115 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introducción &mdash; documentación de Call me by your reads - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Call me by your reads
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Introducción</a></li>
+<li><a class="reference internal" href="#grep"><code class="code docutils literal notranslate"><span class="pre">grep</span></code></a></li>
+<li><a class="reference internal" href="#cut"><code class="code docutils literal notranslate"><span class="pre">cut</span></code></a></li>
+<li><a class="reference internal" href="#sort"><code class="code docutils literal notranslate"><span class="pre">sort</span></code></a></li>
+<li><a class="reference internal" href="#redireccion">Redirección: <code class="code docutils literal notranslate"><span class="pre">|</span></code></a></li>
+<li><a class="reference internal" href="#id1">Redirección: <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></a></li>
+<li><a class="reference internal" href="#avanzado-awk">Avanzado: <code class="code docutils literal notranslate"><span class="pre">awk</span></code></a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Call me by your reads</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introducción</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/parsing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduccion">
+<h1>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>A pesar de que los datos de secuenciación masiva y de generación de proteomas ha avanzado monumentalmente, los datos finales siguen siendo representados como cadenas de texto, tablas o estructuras de datos simples pero masivos.</p>
+<p>Con esto en mente, es importante que aprendamos a seleccionar datos a partir de archivos de relevancia biológica como secuencias, tablas, arreglos, etc.</p>
+<p>Tomemos como ejemplo el formato vcf con el que se representan las variantes en humanos y otros organismos</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  g204</span>
+<span class="n">chr1</span>       <span class="mi">13417</span>   <span class="n">rs777038595</span>     <span class="n">C</span>       <span class="n">CGAGA</span>   <span class="mf">324.73</span>  <span class="n">PASS</span>    <span class="n">AC</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">AF</span><span class="o">=</span><span class="mf">0.500</span><span class="p">;</span><span class="n">AN</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">BaseQRankSum</span><span class="o">=</span><span class="mf">0.583</span><span class="p">;</span><span class="n">DB</span><span class="p">;</span><span class="n">DP</span><span class="o">=</span><span class="mi">26</span><span class="p">;</span><span class="n">ExcessHet</span><span class="o">=</span><span class="mf">3.0103</span><span class="p">;</span><span class="n">FS</span><span class="o">=</span><span class="mf">0.000</span><span class="p">;</span><span class="n">MLEAC</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">MLEAF</span><span class="o">=</span><span class="mf">0.500</span><span class="p">;</span><span class="n">MQ</span><span class="o">=</span><span class="mf">22.21</span><span class="p">;</span><span class="n">MQRankSum</span><span class="o">=-</span><span class="mf">0.032</span><span class="p">;</span><span class="n">QD</span><span class="o">=</span><span class="mf">12.49</span><span class="p">;</span><span class="n">ReadPosRankSum</span><span class="o">=-</span><span class="mf">2.185</span><span class="p">;</span><span class="n">SOR</span><span class="o">=</span><span class="mf">0.446</span><span class="p">;</span><span class="n">VQSLOD</span><span class="o">=</span><span class="mf">0.698</span><span class="p">;</span><span class="n">culprit</span><span class="o">=</span><span class="n">ReadPosRankSum</span> <span class="n">GT</span><span class="p">:</span><span class="n">AD</span><span class="p">:</span><span class="n">DP</span><span class="p">:</span><span class="n">GQ</span><span class="p">:</span><span class="n">PL</span>  <span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="mi">11</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">99</span><span class="p">:</span><span class="mi">362</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">634</span>
+</pre></div>
+</div>
+<p>Esta fila corresponde a una variación observada en un individuo en un experimento de secuenciación masiva. Pareciera que es algo que podemos analizar incluso en excel o word, sin embargo, esa es sólo una línea.</p>
+<p>En realidad, en los experimentos de secuenciación masiva, se obtienen aproximadamente 50,000 variaciones (líneas) por cada individuo cuando se secuencia un <a class="reference external" href="https://en.wikipedia.org/wiki/Exome">exoma</a>; asímismo, no solamente se secuencia un individuo, se secuencian decenas, centenas, miles incluso millones de individuos, de modo que analizar esa tabla (porque no deja de ser una tabla) en excel, resulta cuando menos, inocente.</p>
+<div class="toggle admonition">
+<p class="admonition-title">Descripción extendida del formato vcf</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 11%" />
+<col style="width: 85%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>1: CHROM</p></td>
+<td rowspan="2"><p>chr1</p></td>
+<td rowspan="2"><p>Cromosoma en dónde se ubica la variante</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>2: POS</p></td>
+<td rowspan="2"><p>13417</p></td>
+<td rowspan="2"><p>Posición de la variante en el cromosoma</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>3: ID</p></td>
+<td rowspan="2"><p>rs777038595</p></td>
+<td rowspan="2"><p>Identificador de la variante</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>4: REF</p></td>
+<td rowspan="2"><p>C</p></td>
+<td rowspan="2"><p>Alelo de referencia</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>5: ALT</p></td>
+<td rowspan="2"><p>CGAGA</p></td>
+<td rowspan="2"><p>Alelo encontrado en la muestra</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>6: QUAL</p></td>
+<td rowspan="2"><p>324.73</p></td>
+<td rowspan="2"><p>Score de calidad de la variante</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>7: FILTER</p></td>
+<td rowspan="2"><p>PASS</p></td>
+<td rowspan="2"><p>Flag de calidad de la variante</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="34"><p>8:INFO</p></td>
+<td rowspan="2"><p>AC=1;</p></td>
+<td rowspan="2"><p>Número de alelos alternos encontrados</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>AF=0.500;</p></td>
+<td rowspan="2"><p>Frecuencia alelica (alelo alterno)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>AN=2;</p></td>
+<td rowspan="2"><p>Número total de alelos para una variante</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>BaseQRankSum=0.583</p></td>
+<td rowspan="2"><p>Z-score de la calidad de las bases mapeadas en el alelo alterno vs el alelo de referencia empleando una prueba de Wilcoxon</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>DB;</p></td>
+<td rowspan="2"><p>Indica si la variante pertenece a una base de datos (dbSNP)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>DP=26;</p></td>
+<td rowspan="2"><p>número de lecturas mapeadas en la posición de la variante</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>ExcessHet=3.0103;</p></td>
+<td rowspan="2"><p>p-value en escala Phred para una prueba exacta de exceso de heterocigosidad</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>FS=0.000;</p></td>
+<td rowspan="2"><p>P-value ajustado para determinar sesgo hacía una cadena de DNA empleando una prueba exacta de Fisher</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>MLEAC=1;</p></td>
+<td rowspan="2"><p>Máxima verosimilitud esperada para el número de alelos observados (depende del número de muestras).</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>MLEAF=0.500;</p></td>
+<td rowspan="2"><p>Máxima verosimilitud esperada para las frecuencias alélicas (depende del número de muestras).</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>MQ=22.21;</p></td>
+<td rowspan="2"><p>Calidad media de mapeo en la posición de la variante.</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>MQRankSum=-0.032;</p></td>
+<td rowspan="2"><p>Z-score de la calidad de mapeo las bases alíneadas en el alelo alterno vs el alelo de referencia empleando una prueba de Wilcoxon</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>QD=12.49;</p></td>
+<td rowspan="2"><p>Confianza del alelo observado (Quality over depth)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>ReadPosRankSum=-2.185;</p></td>
+<td rowspan="2"><p>Z-score del sesgo posicional (con respecto de la longitud de la lectura) del alelo alternativo vs el alelo de referencia (depende del número de muestras)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>SOR=0.446;</p></td>
+<td rowspan="2"><p>Suma simétrica de la razón de momios del número de lecturas que presentan la variante cerca del final de la lectura, vs las lecturas que la presentan cerca del inicio de la lectura.</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>VQSLOD=0.698;</p></td>
+<td rowspan="2"><p>Logaritmo de la razón de momios de que la variante sea verdadera vs que sea un falso positivo.</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>culprit=ReadPosRankSum</p></td>
+<td rowspan="2"><p>El descriptor que presentó la métrica más desfavorable</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="10"><p>9:FORMAT</p></td>
+<td rowspan="2"><p>GT</p></td>
+<td rowspan="2"><p>Genotipo</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>AD</p></td>
+<td rowspan="2"><p>Profundidad de los alelos observados (Ref,Alt)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>DP</p></td>
+<td rowspan="2"><p>Profundidad total (número de lecturas</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>GQ</p></td>
+<td rowspan="2"><p>Calidad del genotipado</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>PL</p></td>
+<td rowspan="2"><p>Verosimilitud de genotipos (Obs,Nul,Alt)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="10"><p>10:g204</p></td>
+<td rowspan="2"><p>0/1</p></td>
+<td rowspan="2"><p>Heterocigoto</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>15,11</p></td>
+<td rowspan="2"><p>(C)15 reads + (CGAGA)11 reads</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>26</p></td>
+<td rowspan="2"></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>99</p></td>
+<td rowspan="2"></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>362,0,634</p></td>
+<td rowspan="2"></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<p>A través del uso de los siguientes comandos podemos filtrar éstos y otros archivos de relevancia biológica</p>
+<p>Para comenzar, vamos a descargar un archivo con el que podamos trabajar</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+$ wget https://raw.githubusercontent.com/vflorelo/Call-me-by-your-reads/master/snpEff_genes.txt
+</pre></div>
+</div>
+<p>Y entonces tendremos un archivo llamado snpEff_genes.txt que es un resumen de cuantas variantes se encontraron en cada gen en un experimento de secuenciación de exoma empleando el kit <a class="reference external" href="https://emea.illumina.com/library-prep-array-kit-selector/kits-and-arrays/trusight-one-expanded-panel.html">TruSight One expanded</a></p>
+<p>Primero lo revisamos rapidamente con <code class="code docutils literal notranslate"><span class="pre">head</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ head snpEff_genes.txt
+# The following table is formatted as tab separated values.
+#GeneName       GeneId  TranscriptId    BioType variants_impact_HIGH    variants_impact_LOW     variants_impact_MODERATE        variants_impact_MODIFIER        variants_effect_3_prime_UTR_variant     variants_effect_5_prime_UTR_premature_start_codon_gain_variant  variants_effect_5_prime_UTR_variant     variants_effect_conservative_inframe_deletion   variants_effect_conservative_inframe_insertion  variants_effect_disruptive_inframe_deletion     variants_effect_disruptive_inframe_insertion    variants_effect_downstream_gene_variant variants_effect_frameshift_variant      variants_effect_intron_variant  variants_effect_missense_variant        variants_effect_non_coding_transcript_exon_variant      variants_effect_non_coding_transcript_variant   variants_effect_splice_acceptor_variant variants_effect_splice_donor_variant    variants_effect_splice_region_variant   variants_effect_start_lost      variants_effect_stop_gained     variants_effect_stop_lost       variants_effect_stop_retained_variant   variants_effect_synonymous_variant      variants_effect_upstream_gene_variant
+A2M     ENSG00000175899 ENST00000318602 protein_coding  1       1       1       0       0       0       0       0       0       0       0       0       0       2       1       0       0       1       0       2       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000462568 retained_intron 0       1       0       1       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       0       0       0       1
+A2M     ENSG00000175899 ENST00000472360 retained_intron 0       0       0       2       0       0       0       0       0       0       0       2       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000543436 processed_transcript    0       1       0       2       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       0       0       0       2
+A2M     ENSG00000175899 ENST00000545828 processed_transcript    0       0       0       3       0       0       0       0       0       0       0       0       0       3       0       0       0       0       0       0       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000546069 nonsense_mediated_decay 1       0       0       3       1       0       0       0       0       0       0       1       0       1       0       1       0       1       0       1       0       0       0       0       0       0
+A4GALT  ENSG00000128274 ENST00000249005 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0       2       0
+A4GALT  ENSG00000128274 ENST00000381278 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0       2       0
+</pre></div>
+</div>
+</div>
+<div class="section" id="grep">
+<h1><code class="code docutils literal notranslate"><span class="pre">grep</span></code><a class="headerlink" href="#grep" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><strong>G</strong> lobally search for a <strong>R</strong> egular <strong>E</strong> xpression and <strong>P</strong> rint matching lines</p>
+<p>Como su nombre lo indica, grep busca un patrón (o expresión regular) y nos entrega las líneas que contengan dicho patrón de búsqueda</p>
+<blockquote>
+<div><div class="toggle admonition">
+<p class="admonition-title">Opciones <code class="code docutils literal notranslate"><span class="pre">grep</span></code></p>
+<ul>
+<li><p>Buscar un patrón en un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep ABCD3 snpEff_genes.txt
+ABCD3   ENSG00000117528 ENST00000315713 protein_coding  0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       1       0
+ABCD3   ENSG00000117528 ENST00000370214 protein_coding  0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       1       0
+ABCD3   ENSG00000117528 ENST00000468860 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       0       0       0       01      0       0       0       0       0       0       0       0       0       0
+ABCD3   ENSG00000117528 ENST00000647998 protein_coding  0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       1       0
+</pre></div>
+</div>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">-w</span></code> Buscar un patrón en un archivo <em>si y solo si</em>, ocurre como <strong>palabra completa</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep ADCY1 snpEff_genes.txt
+ADCY1   ENSG00000164742 ENST00000297323 protein_coding  0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       1       0
+ADCY10  ENSG00000143199 ENST00000367848 protein_coding  0       4       2       0       0       0       0       0       0       0       0       0       0       0       2       00      0       0       0       0       0       0       0       4       0
+ADCY10  ENSG00000143199 ENST00000367851 protein_coding  0       4       2       0       0       0       0       0       0       0       0       0       0       0       2       00      0       0       0       0       0       0       0       4       0
+ADCY10  ENSG00000143199 ENST00000485964 nonsense_mediated_decay 0       0       0       3       1       0       0       0       0       0       0       0       0       0       02      0       0       0       0       0       0       0       0       0       0
+ADCY10  ENSG00000143199 ENST00000545172 protein_coding  0       4       2       0       0       0       0       0       0       0       0       0       0       0       2       00      0       0       0       0       0       0       0       4       0
+
+
+$ grep -w ADCY1 snpEff_genes.txt
+ADCY1   ENSG00000164742 ENST00000297323 protein_coding  0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       1       0
+</pre></div>
+</div>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">-c</span></code> Buscar un patrón en un archivo pero en vez de entregar las líneas que contienen el patrón, entrega el <strong>número de líneas que contiene el patrón</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -c BRCA2 snpEff_genes.txt
+5
+</pre></div>
+</div>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">-m</span></code> Buscar un patrón en un archivo y entregar como maximo m líneas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -m1 BRCA2 snpEff_genes.txt
+BRCA2   ENSG00000139618 ENST00000380152 protein_coding  0       4       2       0       0       0       0       0       0       0       0       0       0       0       2       00      0       0       0       0       0       0       0       4       0
+</pre></div>
+</div>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">-n</span></code> Buscar un patrón en un archivo y mostrar el <strong>número de línea</strong> en la que ocurre el patrón de búsqueda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -n BRCA2 snpEff_genes.txt
+5884:BRCA2      ENSG00000139618 ENST00000380152 protein_coding  0       4       2       0       0       0       0       0       0       0       0       0       0       0       20      0       0       0       0       0       0       0       0       4       0
+5885:BRCA2      ENSG00000139618 ENST00000530893 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+5886:BRCA2      ENSG00000139618 ENST00000544455 protein_coding  0       4       2       0       0       0       0       0       0       0       0       0       0       0       20      0       0       0       0       0       0       0       0       4       0
+5887:BRCA2      ENSG00000139618 ENST00000614259 processed_transcript    0       0       0       6       0       0       0       0       0       0       0       0       0       00      6       0       0       0       0       0       0       0       0       0       0
+5888:BRCA2      ENSG00000139618 ENST00000665585 nonsense_mediated_decay 0       0       0       3       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       0       0       0       3
+</pre></div>
+</div>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">-v</span></code> Buscar un patrón en un archivo y muestra las líneas <strong>que no contengan</strong> el patrón de búsqueda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -v BRCA2 snpEff_genes.txt
+&lt;Es mucho output como para ponerlo ;) &gt;
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>grep puede procesar muchos archivos, pero solo un patrón de búsqueda a la vez</p>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>La siguiente construcción es correcta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep patrón archivo_1 archivo_2 archivo_3
+</pre></div>
+</div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p>La siguiente construcción es incorrecta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep patrón_1 patrón_2 patrón_3 archivo_1
+</pre></div>
+</div>
+<p>En esta ultima construcción, grep interpretará <code class="code docutils literal notranslate"><span class="pre">patrón_2</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">patrón_3</span></code> como archivos, no como patrónes de búsqueda</p>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Las opciones de <code class="code docutils literal notranslate"><span class="pre">grep</span></code> son combinables, de modo que podemos tener:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -wv termino archivo
+
+$ grep -wn termino archivo
+
+$ grep -wc termino archivo
+</pre></div>
+</div>
+<p>O las que se te ocurran, siempre y cuando tengan sentido ;)</p>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cut">
+<h1><code class="code docutils literal notranslate"><span class="pre">cut</span></code><a class="headerlink" href="#cut" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Cut es una utilidad para separar columnas de un archivo tabular, como los vcfs o el archivo snpEff_genes.txt</p>
+<blockquote>
+<div><div class="toggle admonition">
+<p class="admonition-title">Modos de operación de <code class="code docutils literal notranslate"><span class="pre">cut</span></code></p>
+<ul>
+<li><p>Obtener la primera columna de un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -f1 snpEff_genes.txt
+# The following table is formatted as tab separated values.
+#GeneName
+A2M
+A2M
+A2M
+A2M
+A2M
+A2M
+A4GALT
+A4GALT
+</pre></div>
+</div>
+</li>
+<li><p>Obtener las primeras dos columnas de un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -f1,2 snpEff_genes.txt
+# The following table is formatted as tab separated values.
+#GeneName       GeneId
+A2M     ENSG00000175899
+A2M     ENSG00000175899
+A2M     ENSG00000175899
+A2M     ENSG00000175899
+A2M     ENSG00000175899
+A2M     ENSG00000175899
+A4GALT  ENSG00000128274
+A4GALT  ENSG00000128274
+</pre></div>
+</div>
+</li>
+<li><p>Obtener las primeras cinco columnas de un archivo</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>podemos usar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -f1,2,3,4,5 snpEff_genes.txt
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>o podemos usar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -f1-5 snpEff_genes.txt
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Obtener las columnas 2 y 3 de un archivo tabular</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>podemos usar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -f2,3 snpEff_genes.txt
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>o podemos usar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -f1 --complement snpEff_genes.txt
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Obtener todas las columnas de un archivo empezando por la segunda</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Podemos hacerlo pidiendo un intervalo abierto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -f2- snpEff_genes.txt
+</pre></div>
+</div>
+<p>O podemos hacerlo excluyendo la columna que nos estorba:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -f1 --complement snpEff_genes.txt
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p><code class="code docutils literal notranslate"><span class="pre">cut</span></code> usa por default el tabulador (“\t”) como separador de campo. Qué pasa si mi tabla no está separada por tabuladores?</p>
+<p>En ese escenario, podemos especificarle a <code class="code docutils literal notranslate"><span class="pre">cut</span></code> que use caracteres específicos como separadores de campo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat file_1
+a1|b1|c1|d1|e1|f1
+a2|b2|c2|d2|e2|f2
+a3|b3|c3|d3|e3|f3
+
+$ cut -d\| -f2 file_1
+b1
+b2
+b2
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Al igual que con <code class="code docutils literal notranslate"><span class="pre">grep</span></code>, las opciones de <code class="code docutils literal notranslate"><span class="pre">cut</span></code> pueden ser combinables para tener un mejor control de lo que nos va a entregar nuestra terminal</p>
+<p>De este modo, las siguientes construcciones nos van a dar unicamente las columnas 2 y 6 de un archivo separado por comas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cut -d, -f2,6
+
+$ cut -d, -f1,3-5 --complement
+</pre></div>
+</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sort">
+<h1><code class="code docutils literal notranslate"><span class="pre">sort</span></code><a class="headerlink" href="#sort" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Sort puede ordenar un conjunto de líneas empleando algún criterio.</p>
+<blockquote>
+<div><div class="toggle admonition">
+<p class="admonition-title">Modos de operacion de <code class="code docutils literal notranslate"><span class="pre">sort</span></code></p>
+<div class="admonition-ordenar-un-conjunto-de-lineas-alfanumericamente admonition">
+<p class="admonition-title">Ordenar un conjunto de líneas alfanumericamente</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sort snpEff_genes.txt
+A2M     ENSG00000175899 ENST00000318602 protein_coding  1       1       1       0       0       0       0       0       0       0       0       0       0       2       1       00      1       0       2       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000462568 retained_intron 0       1       0       1       0       0       0       0       0       0       0       0       0       1       0       00      0       0       1       0       0       0       0       0       1
+A2M     ENSG00000175899 ENST00000472360 retained_intron 0       0       0       2       0       0       0       0       0       0       0       2       0       0       0       00      0       0       0       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000543436 processed_transcript    0       1       0       2       0       0       0       0       0       0       0       0       0       1       00      0       0       0       1       0       0       0       0       0       2
+A2M     ENSG00000175899 ENST00000545828 processed_transcript    0       0       0       3       0       0       0       0       0       0       0       0       0       3       00      0       0       0       0       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000546069 nonsense_mediated_decay 1       0       0       3       1       0       0       0       0       0       0       1       0       1       01      0       1       0       1       0       0       0       0       0       0
+A4GALT  ENSG00000128274 ENST00000249005 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       00      0       0       0       0       0       0       0       2       0
+A4GALT  ENSG00000128274 ENST00000381278 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       00      0       0       0       0       0       0       0       2       0
+A4GALT  ENSG00000128274 ENST00000401850 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       00      0       0       0       0       0       0       0       2       0
+A4GALT  ENSG00000128274 ENST00000465765 processed_transcript    0       0       0       3       0       0       0       0       0       0       0       3       0       0       00      0       0       0       0       0       0       0       0       0       0
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>En cómputo, el orden alfanumérico es algo truculento, 100 va antes que 10, y 10 va antes que 1.</p>
+</div>
+<div class="admonition-ordenar-un-conjunto-de-lineas-numericamente admonition">
+<p class="admonition-title">Ordenar un conjunto de líneas numericamente
+::</p>
+<blockquote>
+<div><p>$ sort -n snpEff_genes.txt</p>
+</div></blockquote>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>En cómputo, el orden numérico es sensible a la presencia de caracteres alfabéticos, por lo que para ordenar líneas adecuadamente se requiere limpiar los datos (que unicamente contengan un tipo de datos por columna o por campo) o de emplear otra estrategia</p>
+</div>
+<div class="admonition-ordenar-un-conjunto-de-lineas-como-versionado-de-software admonition">
+<p class="admonition-title">Ordenar un conjunto de líneas como versionado de software
+::</p>
+<blockquote>
+<div><p>$ sort -V snpEff_genes.txt</p>
+</div></blockquote>
+</div>
+<div class="admonition-ordenar-de-forma-descendente-un-conjunto-de-lineas admonition">
+<p class="admonition-title">Ordenar de forma descendente un conjunto de líneas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sort -r snpEff_genes.txt
+ZSWIM8  ENSG00000214655 ENST00000605216 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000604754 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000604729 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000604524 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000604165 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000603840 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000603409 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000603309 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000603195 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000603187 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+</pre></div>
+</div>
+</div>
+<div class="admonition-ordenar-con-base-en-alguna-columna-especifica admonition">
+<p class="admonition-title">Ordenar con base en alguna columna específica</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sort -k2 snpEff_genes.txt
+C1orf112        ENSG00000000460 ENST00000498289 processed_transcript    0       0       0       5       0       0       0       0       0       0       0       0       0       50      0       0       0       0       0       0       0       0       0       0       0
+CFH     ENSG00000000971 ENST00000359637 protein_coding  0       1       2       0       0       0       0       0       0       0       0       0       0       0       2       00      0       0       0       0       0       0       0       1       0
+CFH     ENSG00000000971 ENST00000367429 protein_coding  0       2       2       0       0       0       0       0       0       0       0       0       0       0       2       00      0       0       0       0       0       0       0       2       0
+CFH     ENSG00000000971 ENST00000466229 retained_intron 0       0       0       4       0       0       0       0       0       0       0       0       0       0       0       30      0       0       0       0       0       0       0       0       1
+CFH     ENSG00000000971 ENST00000496761 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       0       0       0       01      0       0       0       0       0       0       0       0       0       0
+CFH     ENSG00000000971 ENST00000630130 protein_coding  0       1       2       0       0       0       0       0       0       0       0       0       0       0       2       00      0       0       0       0       0       0       0       1       0
+GCLC    ENSG00000001084 ENST00000504525 nonsense_mediated_decay 0       0       0       2       0       0       1       0       0       0       0       0       0       0       01      0       0       0       0       0       0       0       0       0       0
+GCLC    ENSG00000001084 ENST00000505197 protein_coding  0       0       0       1       0       0       0       0       0       0       0       0       0       1       0       00      0       0       0       0       0       0       0       0       0
+GCLC    ENSG00000001084 ENST00000513939 protein_coding  0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       0       1
+GCLC    ENSG00000001084 ENST00000514004 protein_coding  0       0       0       1       0       0       1       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       0       0
+</pre></div>
+</div>
+</div>
+<div class="admonition-ordenar-con-opciones-multiples-code-sort-al-igual-que-code-cut-o-code-grep-permite-combinar-opciones-siempre-y-cuando-estas-tengan-sentido admonition">
+<p class="admonition-title">Ordenar con opciones múltiples
+<code class="code docutils literal notranslate"><span class="pre">sort</span></code> al igual que <code class="code docutils literal notranslate"><span class="pre">cut</span></code> o <code class="code docutils literal notranslate"><span class="pre">grep</span></code> permite combinar opciones, siempre y cuando estas tengan sentido</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sort -n -r -k5 snpEff_genes.txt
+ZAN     ENSG00000146839 ENST00000620596 protein_coding  3       1       12      2       0       0       0       1       0       0       0       0       2       3       11      00      0       1       1       0       0       0       0       1       0
+ZAN     ENSG00000146839 ENST00000618565 protein_coding  3       2       13      0       0       0       0       1       0       0       0       0       2       2       12      00      0       1       2       0       0       0       0       1       0
+ZAN     ENSG00000146839 ENST00000613979 protein_coding  3       2       13      0       0       0       0       1       0       0       0       0       2       2       12      00      0       1       2       0       0       0       0       1       0
+ZAN     ENSG00000146839 ENST00000546292 protein_coding  3       1       12      2       0       0       0       1       0       0       0       0       2       3       11      00      0       1       1       0       0       0       0       1       0
+RAI1    ENSG00000108557 ENST00000640861 protein_coding  3       0       2       0       0       0       0       0       0       0       0       0       3       0       2       00      0       0       0       0       0       0       0       0       0
+RAI1    ENSG00000108557 ENST00000395774 protein_coding  3       0       2       0       0       0       0       0       0       0       0       0       3       0       2       00      0       0       0       0       0       0       0       0       0
+RAI1    ENSG00000108557 ENST00000353383 protein_coding  3       0       2       1       0       0       0       0       0       0       0       1       3       0       2       00      0       0       0       0       0       0       0       0       0
+FMO2    ENSG00000094963 ENST00000209929 protein_coding  3       1       6       0       0       0       0       0       1       0       0       0       2       0       5       00      0       0       0       0       1       0       0       1       0
+ZMYND15 ENSG00000141497 ENST00000592813 protein_coding  2       1       0       6       0       0       0       0       0       0       0       0       2       0       0       00      0       0       0       0       0       0       0       1       6
+ZMYND15 ENSG00000141497 ENST00000573751 protein_coding  2       1       0       3       0       0       0       0       0       0       0       0       2       0       0       00      0       0       0       0       0       0       0       1       3
+</pre></div>
+</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="redireccion">
+<h1>Redirección: <code class="code docutils literal notranslate"><span class="pre">|</span></code><a class="headerlink" href="#redireccion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Una de las principales utilidades de la línea de comandos es la posibilidad de concatenar comandos, es decir, tomar el resultado de un comando y pasarselo al siguiente comando</p>
+<p>Para ello debemos considerar que cuando ejecutamos un programa o comando, este nos arroja <em>standard streams</em>, dentro de las cuales tenemos dos muy importantes</p>
+<div class="toggle admonition">
+<p class="admonition-title">STDOUT</p>
+<p>La salida estandar (STDOUT) es lo que arroja un comando o un programa a la terminal, contiene unicamente el resultado del proceso que haya realizado un comando o programa</p>
+<p>En el siguiente ejemplo, <code class="code docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">world!&quot;</span></code> es la salida estándar del comando <code class="code docutils literal notranslate"><span class="pre">echo</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;Hello world!&quot;
+</pre></div>
+</div>
+</div>
+<div class="toggle admonition">
+<p class="admonition-title">STDERR</p>
+<p>El error estándar (STDERR) es también lo que arroja un comando o un programa a la terminal pero que contiene diagnósticos internos e información del proceso que haya realizado un comando o programa (no necesariamente el resultado)</p>
+<p>En el siguiente ejemplo, <code class="code docutils literal notranslate"><span class="pre">&quot;Hola</span> <span class="pre">mundo!&quot;</span></code> es la salida estándar del comando <code class="code docutils literal notranslate"><span class="pre">cat</span></code>, no obstante, al no haber encontrado el archivo <code class="code docutils literal notranslate"><span class="pre">mi_otro_archivo.txt</span></code>, nos manda el mensaje de <em>error</em> (STDERR) <code class="code docutils literal notranslate"><span class="pre">cat:</span> <span class="pre">mi_archivo.txt</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat mi_archivo.txt mi_otro_archivo.txt
+cat: mi_otro_archivo.txt No such file or directory
+Hola mundo!
+</pre></div>
+</div>
+</div>
+<p>Teniendo esto en mente, veremos que los pipes “<code class="code docutils literal notranslate"><span class="pre">|</span></code>” toman el <code class="code docutils literal notranslate"><span class="pre">STDOUT</span></code> y lo convierten en otro <em>standard stream</em> llamado entrada estandar (STDIN)</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>De modo natural, nuestros programas y comandos generan <code class="code docutils literal notranslate"><span class="pre">STDOUT</span></code>, los pipes toman este stream y lo pueden pasar a otro comando</p>
+<p>Aunque nosotros no vemos el <code class="code docutils literal notranslate"><span class="pre">STDIN</span></code>, el siguiente comando si puede verlo y procesarlo como si se tratara de un archivo</p>
+<p>El siguiente comando también generará <code class="code docutils literal notranslate"><span class="pre">STDOUT</span></code> y <code class="code docutils literal notranslate"><span class="pre">STDERR</span></code> y podemos seguir transformando el <code class="code docutils literal notranslate"><span class="pre">STDOUT</span></code> resultante <em>ad infinitum</em> &amp; <em>ad nauseam</em></p>
+<p>En teoria podríamos concatenar tantos comandos como queramos, siempre y cuando la construcción tenga sentido</p>
+<img alt="_images/stdin_stderr.png" src="_images/stdin_stderr.png" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ seq 1 3
+1
+2
+3
+
+$ seq 1 3 | grep 2
+2
+
+$ seq 1 12 | grep 1
+1
+10
+11
+12
+
+$ seq 1 12 | grep 1 | grep 2
+12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>Redirección: <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">&gt;&gt;</span></code><a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Ya vimos como dirigir la salida de nuestros comandos y verla en una terminal, pero ahora. Qué pasa si queremos mandar esos resultados a un archivo?</p>
+<p>Para ello usaremos los operadores <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>El operador <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> nos permite mandar la salida estándar de un comando o una serie de comandos a un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+
+$ seq 1 12 | grep 1 | grep 2
+12
+
+$ seq 1 12 | grep 1 | grep 2 &gt; archivo_1
+
+$ ls
+archivo_1
+
+$ cat archivo_1
+12
+</pre></div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p>El operador <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> puede ser muy destructivo si no se emplea adecuadamente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;blablabla&quot;</span> <span class="o">&gt;</span> <span class="n">tesis_final</span><span class="o">.</span><span class="n">docx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>El operador <code class="code docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> nos permite <strong>agregar</strong> la salida estándar de un comando o una serie de comandos a un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ seq 1 12 | grep 1 | grep 2 &gt; archivo_1
+
+$ cat archivo_1
+12
+
+$ seq 1 12 | grep 1
+1
+10
+11
+12
+
+$ seq 1 12 | grep 1 &gt;&gt; archivo_1
+
+$ cat archivo_1
+12
+1
+10
+11
+12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="avanzado-awk">
+<h1>Avanzado: <code class="code docutils literal notranslate"><span class="pre">awk</span></code><a class="headerlink" href="#avanzado-awk" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="code docutils literal notranslate"><span class="pre">awk</span></code> por si mismo es un lenguaje de programación, no obstante tiene aplicación en la línea de comandos como un programa de uso general</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">awk</span></code> sirve para:</dt><dd><ul class="simple">
+<li><p>seleccionar columnas</p></li>
+<li><p>seleccionar filas</p></li>
+<li><p>realizar operaciones aritméticas</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Antes de lanzarnos al uso de <code class="code docutils literal notranslate"><span class="pre">awk</span></code> una pequeña introducción</p>
+<ul>
+<li><p>awk opera por bloques delimitados con “{}”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ awk &#39;{print $0}&#39;
+</pre></div>
+</div>
+</li>
+<li><p>awk puede procesar archivos de forma directa y también puede procesar <code class="code docutils literal notranslate"><span class="pre">STDIN</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ awk &#39;{print $0}&#39; mi_archivo.txt
+
+$ seq 1 12 | awk &#39;{print $1}&#39;
+</pre></div>
+</div>
+</li>
+<li><dl>
+<dt>Para awk todo puede ser una tabla</dt><dd><ul>
+<li><dl class="simple">
+<dt>awk puede usar delimitadores de campo tal como lo haria cut</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>Las variables FS, IFS &amp; OFS son usadas como delimitadores de campo (field separator)</dt><dd><ul>
+<li><p>FS  -&gt; field separator</p></li>
+<li><p>IFS -&gt; input field separator</p></li>
+<li><p>OFS -&gt; output field separator</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Los campos para awk son representados con el signo “$”, de modo que el primer campo es “$1”</p></li>
+<li><dl class="simple">
+<dt>Hay dos campos intrínsecos con notación especial</dt><dd><ul class="simple">
+<li><p>NR -&gt; number of rows</p></li>
+<li><p>$0 -&gt; all fields</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Tomando en consideración lo anterior, las siguientes construcciones son similares</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ head -n3 archivo_1.csv
+a,b,c,d
+e,f,g,h
+i,j,k,l
+
+$ cut -d, -f1,2 archivo_1.csv | head -n3
+a,b
+e,f
+i,j
+
+$ awk &#39;BEGIN{FS=&quot;,&quot;;OFS=&quot;,&quot;}{print $1 OFS $2}&#39; archivo_1.csv | head -n3
+a,b
+e,f
+i,j
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<dl class="simple">
+<dt>Estamos listos para usar awk?</dt><dd><p>Estamos listos para usar awk!</p>
+</dd>
+</dl>
+<p>Volvamos a nuestro archivo snpEff_genes.txt, sabiendo que está separado por tabuladores podemos jugar con esta tabla usando <code class="code docutils literal notranslate"><span class="pre">awk</span></code></p>
+<div class="toggle admonition">
+<p class="admonition-title">Estructura del archivo snpEff.txt</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>Columna</p></td>
+<td rowspan="2"><p>Descripción</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>1</p></td>
+<td rowspan="2"><p>GeneName</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>2</p></td>
+<td rowspan="2"><p>GeneId</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>3</p></td>
+<td rowspan="2"><p>TranscriptId</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>4</p></td>
+<td rowspan="2"><p>BioType</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>5</p></td>
+<td rowspan="2"><p>variants_impact_HIGH</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>6</p></td>
+<td rowspan="2"><p>variants_impact_LOW</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>7</p></td>
+<td rowspan="2"><p>variants_impact_MODERATE</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>8</p></td>
+<td rowspan="2"><p>variants_impact_MODIFIER</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>9</p></td>
+<td rowspan="2"><p>variants_effect_3_prime_UTR_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>10</p></td>
+<td rowspan="2"><p>variants_effect_5_prime_UTR_premature_start_codon_gain_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>11</p></td>
+<td rowspan="2"><p>variants_effect_5_prime_UTR_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>12</p></td>
+<td rowspan="2"><p>variants_effect_conservative_inframe_deletion</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>13</p></td>
+<td rowspan="2"><p>variants_effect_conservative_inframe_insertion</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>14</p></td>
+<td rowspan="2"><p>variants_effect_disruptive_inframe_deletion</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>15</p></td>
+<td rowspan="2"><p>variants_effect_disruptive_inframe_insertion</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>16</p></td>
+<td rowspan="2"><p>variants_effect_downstream_gene_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>17</p></td>
+<td rowspan="2"><p>variants_effect_frameshift_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>18</p></td>
+<td rowspan="2"><p>variants_effect_intron_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>19</p></td>
+<td rowspan="2"><p>variants_effect_missense_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>20</p></td>
+<td rowspan="2"><p>variants_effect_non_coding_transcript_exon_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>21</p></td>
+<td rowspan="2"><p>variants_effect_non_coding_transcript_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>22</p></td>
+<td rowspan="2"><p>variants_effect_splice_acceptor_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>23</p></td>
+<td rowspan="2"><p>variants_effect_splice_donor_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>24</p></td>
+<td rowspan="2"><p>variants_effect_splice_region_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>25</p></td>
+<td rowspan="2"><p>variants_effect_start_lost</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>26</p></td>
+<td rowspan="2"><p>variants_effect_stop_gained</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>27</p></td>
+<td rowspan="2"><p>variants_effect_stop_lost</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>28</p></td>
+<td rowspan="2"><p>variants_effect_stop_retained_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>29</p></td>
+<td rowspan="2"><p>variants_effect_synonymous_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>30</p></td>
+<td rowspan="2"><p>variants_effect_upstream_gene_variant</p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="toggle admonition">
+<p class="admonition-title">Condicionales en <code class="code docutils literal notranslate"><span class="pre">awk</span></code></p>
+<p>Con awk podemos emplear condicionales simples que nos permiten obtener segmentos específicos de un archivo o de un stream</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ awk &#39;BEGIN{FS=&quot;\t&quot;}{if($1==&quot;BRCA1&quot; &amp;&amp; $4==&quot;protein_coding&quot; &amp;&amp; $5&lt;=10){print $0}}&#39; snpEff_genes.txt
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Desglosemos esta construcción:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">awk</span> <span class="pre">'BEGIN{FS=&quot;\t&quot;}'</span></code></dt><dd><p>Este segmento inicia el proceso de lectura del archivo (<code class="code docutils literal notranslate"><span class="pre">BEGIN</span></code>) y le indica a awk que el separador de campo es un tabulador “\t”</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">{if($1==&quot;BRCA1&quot;</span> <span class="pre">&amp;&amp;</span> <span class="pre">$4==&quot;protein_coding&quot;</span> <span class="pre">&amp;&amp;</span> <span class="pre">$5&lt;=10)}</span></code></dt><dd><p>Esta condicional (<code class="code docutils literal notranslate"><span class="pre">if(condition){actions}</span></code>) se lee como:</p>
+<ul>
+<li><dl class="simple">
+<dt>Si se cumplen las siguientes condiciones:</dt><dd><ul>
+<li><p><code class="code docutils literal notranslate"><span class="pre">$1==&quot;BRCA1&quot;</span></code> la primera columna (nombre del gen) es BRCA1</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> y además</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">$4=&quot;protein_coding&quot;</span></code> la cuarta columna (biotipo del transcrito) es codificante</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> y además</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">$5&lt;=10</span></code> la quinta columna (número de variantes de alto impacto) es menor o igual a 10</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>entonces:</dt><dd><ul>
+<li><p><code class="code docutils literal notranslate"><span class="pre">{print</span> <span class="pre">$0}</span></code> muestrame en pantalla todas las columnas</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Y en términos biológicos:</dt><dd><p><strong>Dame los transcritos del gen BRCA2 que sean codificantes y que además presenten menos de 10 variantes de alto impacto</strong></p>
+</dd>
+</dl>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Es importante diferenciar los signos <code class="code docutils literal notranslate"><span class="pre">=</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">==</span></code></p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">=</span></code> es un operador de asignación, por lo que no lo podemos usar en condicionales</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">==</span></code> es un operador de comparación, ideal para usarlo en condicionales</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Las condicionales son sumamente útiles en cualquier lenguaje de programación, sin embargo antes de ejecutarlas debemos verificar que tengan sentido</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{if($1==1 &amp;&amp; $2&lt;=1000000 &amp;&amp; $2&gt;=2000000)}
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Esta construcción no tiene sentido, ya que esencialmente le estaremos pidiendo a awk que nos entregue filas en dónde se cumplen las siguientes condiciones:</dt><dd><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">$1=='1'</span></code> la primera columna sea igual a 1</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> y además</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">$2&lt;='1000000'</span></code> la segunda columna sea menor o igual a 1,000,000</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> y además</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">$2&gt;='2000000'</span></code> la segunda columna sea mayor o igual a 2,000,000</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, @atgenomics, @vflorelo, @dianolasa, @zorbax
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .admonition-title").show();
+        $(".toggle .admonition-title").click(function() {
+            $(this).parent().children().not(".admonition-title").toggle(400);
+            $(this).parent().children(".admonition-title").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

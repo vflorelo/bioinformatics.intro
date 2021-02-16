@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introducción &mdash; documentación de Call me by your reads - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Call me by your reads
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Introducción</a></li>
+<li><a class="reference internal" href="#y-donde-esta-el-genoma">Y dónde está el genoma?</a></li>
+<li><a class="reference internal" href="#alineamiento-de-lecturas-sobre-un-genoma">Alineamiento de lecturas sobre un genoma</a></li>
+<li><a class="reference internal" href="#transformada-de-burrows-wheeler">Transformada de Burrows-Wheeler</a></li>
+<li><a class="reference internal" href="#tries-y-busqueda-por-backtracking"><em>Tries</em> y búsqueda por <em>backtracking</em></a></li>
+<li><a class="reference internal" href="#formatos-de-salida-sam">Formatos de salida: SAM</a></li>
+<li><a class="reference internal" href="#flag">FLAG</a></li>
+<li><a class="reference internal" href="#concise-idiosyncratic-gapped-alignment-report-cigar-para-los-amigos">Concise Idiosyncratic Gapped Alignment Report (CIGAR para los amigos)</a></li>
+<li><a class="reference internal" href="#filtrado-de-lecturas">Filtrado de lecturas</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Call me by your reads</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introducción</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/bwa.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduccion">
+<h1>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Ya tenemos nuestras secuencias en formato fastq y salieron bien de calidad. Qué hago con las secuencias para el llamado de variantes?</p>
+<p>El siguiente paso es alinear dichas lecturas sobre un genoma de referencia que nos permita detectar variaciones <strong>con respecto de ese genoma</strong></p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>En llamado de variantes es de suma importancia especificar cual fue la referencia que se empleó</p>
+<p>La secuencia de referencia del genoma humano no es la misma en 2021 que la que se liberó en Mayo de 2000, en total ha sufrido 19 revisiones para un total de 20 versiones.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>“The human reference genome GRCh38 was released from the Genome Reference Consortium on 17 December 2013. This build contained around 250 gaps, whereas the first version had roughly 150,000 gaps”</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>En este taller emplearemos la versión GRCh38 (hg38) del genoma humano.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>No obstante Illumina y otras compañias no han migrado aún sus archivos hacia la nueva versión del genoma, por lo que tenemos que hacer un par de transformaciones antes de iniciar</p>
+</div>
+<ol class="arabic simple">
+<li><p>Creamos un directorio donde vamos a albergar archivos de soporte</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir 00_other
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Descargamos el archivo de coordenadas que provee el fabricante de nuestro kit de secuenciación</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/00_other
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://support.illumina.com/content/dam/illumina-support/documents/downloads/productfiles/trusight/trusight-one-expanded-file-for-ucsc-browser-v2-0-bed.zip
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unzip trusight-one-expanded-file-for-ucsc-browser-v2-0-bed.zip
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Descargamos el programa liftOver que nos permite transformar sets de coordenadas entre ensamble GRCh37 y GRCh38</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p $HOME/bin
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/bin
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/liftOver
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ chmod 775 liftOver
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Descargamos el archivo <em>chain</em> para que liftOver sepa como transformar entre coordenadas</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/00_other
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget ftp://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gunzip hg19ToHg38.over.chain.gz
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Transformamos nuestro archivo de coordenadas para actualizarlo a la última versión del genoma</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ liftOver &quot;TSOne Expanded BED v2.0.txt&quot; hg19ToHg38.over.chain TSO_xt_hg38.bed unmapped
+</pre></div>
+</div>
+</div>
+<div class="section" id="y-donde-esta-el-genoma">
+<h1>Y dónde está el genoma?<a class="headerlink" href="#y-donde-esta-el-genoma" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En este taller vamos a emplear el genoma de referencia GRCh38 que viene incluido en el paquete de trabajo de GATK (<em>bundle</em>).</p>
+<div class="toggle admonition">
+<p class="admonition-title">Nota</p>
+<blockquote>
+<div><p>Este <em>bundle</em> pesa mucho y puede llevar tiempo descargarlo, de modo que en este taller <strong>no lo vamos a descargar</strong>, no obstante, de dejamos los comandos para que puedas descargarlo en tu computadora (~40 Gb)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install gsutil
+
+$ mkdir -p /usr/local/bioinformatics/bundle
+
+$ mkdir -p /usr/local/bioinformatics/db/GRCh38/clinvar
+
+$ mkdir -p /usr/local/bioinformatics/db/GRCh38/dbSnp
+
+$ cd /usr/local/bioinformatics/bundle
+
+$ gsutil -m cp -r \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/1000G.phase3.integrated.sites_only.no_MATCHED_REV.hg38.vcf&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/1000G.phase3.integrated.sites_only.no_MATCHED_REV.hg38.vcf.idx&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz.tbi&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Axiom_Exome_Plus.genotypes.all_populations.poly.hg38.vcf.gz&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Axiom_Exome_Plus.genotypes.all_populations.poly.hg38.vcf.gz.tbi&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf.idx&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dict&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.64.amb&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.64.ann&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.64.bwt&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.64.pac&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.64.sa&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.fai&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz.tbi&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/scattered_calling_intervals/&quot; \
+  &quot;gs://genomics-public-data/resources/broad/hg38/v0/wgs_calling_regions.hg38.interval_list&quot; \
+  .
+
+$ conda activate gatk
+
+$ cd /usr/local/bioinformatics/db/GRCh38/clinvar
+
+$ wget ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
+
+$ bgzip --reindex clinvar.vcf.gz
+
+$ tabix -p vcf clinvar.vcf.gz
+
+$ cd /usr/local/bioinformatics/db/GRCh38/dbSnp
+
+$ wget ftp://ftp.ncbi.nih.gov/snp/organisms/human_9606/VCF/00-All.vcf.gz
+
+$ bgzip --reindex 00-All.vcf.gz
+
+$ tabix -p vcf 00-All.vcf.gz
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="alineamiento-de-lecturas-sobre-un-genoma">
+<h1>Alineamiento de lecturas sobre un genoma<a class="headerlink" href="#alineamiento-de-lecturas-sobre-un-genoma" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Existen cientos de estrategias con las que se pueden alinear secuencias sobre un genoma de referencia, no obstante muchas de ellas son imprácticas cuando se trata de datos voluminosos</p>
+<p>En esta sesión veremos una de las estrategias más ampliamente utilizadas en bioinformática (no solamente en llamado de variantes): Alineamiento basado en la transformada de Burrows-Wheeler</p>
+<p>Este procedimiento consta de dos etapas</p>
+<ol class="arabic">
+<li><p>Construcción de la transformada de Burrows-Wheeler de nuestra secuencia genómica</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Este procedimiento se omite ya que el <em>bundle</em> de GATK incluye un índice del genoma</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Busqueda de las posiciones de las lecturas sobre la secuencia genómica mediante backtracking</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Procedimiento:</p></li>
+</ul>
+<p>2.1. Preparamos el escenario</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+
+$ mkdir 03_bwa
+
+$ cd 03_bwa
+</pre></div>
+</div>
+<p>2.2. Concatenamos las lecturas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat $HOME/01_reads/*R1*.gz &gt; fwd_reads.fastq.gz
+
+$ cat $HOME/01_reads/*R2*.gz &gt; rev_reads.fastq.gz
+</pre></div>
+</div>
+<p>2.3. Copiamos nuestro archivo de coordenadas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp $HOME/00_other/TSO_xt_hg38.bed .
+</pre></div>
+</div>
+<p>2.4. Mapeamos las lecturas al genoma (en este paso debes tener activo el entorno gatk -&gt; <code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">gatk</span></code> )</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nohup bwa mem -M -t 4 /usr/local/bioinformatics/bundle/Homo_sapiens_assembly38.fasta fwd_reads.fastq.gz rev_reads.fastq.gz &gt; S3.sam 2&gt; S3.err &amp;
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Con el comando <code class="code docutils literal notranslate"><span class="pre">nohup</span></code> nos aseguramos que el programa esté corriendo en el fondo y mientras eso ocurre, podemos cerrar nuestras terminales para la parte teórica</p>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="transformada-de-burrows-wheeler">
+<h1>Transformada de Burrows-Wheeler<a class="headerlink" href="#transformada-de-burrows-wheeler" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La transformada de Burrows-Wheeler (BWT por sus siglas en inglés) tiene aplicaciones en múltiples áreas, es el fundamento de algoritmos de compresión como el protocolo gz</p>
+<p>La BWT consta de 4 pasos esenciales</p>
+<ol class="arabic simple">
+<li><p>Construcción de una matriz de permutaciones</p></li>
+<li><p>Ordenamiento lexicográfico de la matriz</p></li>
+<li><p>Extracción de los campos informativos</p></li>
+<li><p>Compresión de los datos para su manejo</p></li>
+</ol>
+</div>
+<p>Comencemos con un ejemplo <em>sencillo</em> (<em>ish</em>): tomemos la palabra <code class="code docutils literal notranslate"><span class="pre">MISSISSIPPI</span></code></p>
+<div class="admonition-construccion-de-una-matriz-de-permutaciones admonition">
+<p class="admonition-title">Construcción de una matriz de permutaciones</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="_images/bwt_01.png"><img alt="command" src="_images/bwt_01.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_02.png"><img alt="command" src="_images/bwt_02.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_03.png"><img alt="command" src="_images/bwt_03.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_04.png"><img alt="command" src="_images/bwt_04.png" style="width: 150px;" /></a></p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="_images/bwt_05.png"><img alt="command" src="_images/bwt_05.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_06.png"><img alt="command" src="_images/bwt_06.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_07.png"><img alt="command" src="_images/bwt_07.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_08.png"><img alt="command" src="_images/bwt_08.png" style="width: 150px;" /></a></p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="_images/bwt_09.png"><img alt="command" src="_images/bwt_09.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_10.png"><img alt="command" src="_images/bwt_10.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_11.png"><img alt="command" src="_images/bwt_11.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/bwt_12.png"><img alt="command" src="_images/bwt_12.png" style="width: 150px;" /></a></p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-ordenamiento-lexicografico-de-la-matriz-y-obtencion-de-los-campos-informativos admonition">
+<p class="admonition-title">Ordenamiento lexicográfico de la matriz y obtención de los campos informativos</p>
+<a class="reference internal image-reference" href="_images/bwt_13.png"><img alt="_images/bwt_13.png" src="_images/bwt_13.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition-compresion-de-los-datos admonition">
+<p class="admonition-title">Compresión de los datos</p>
+<p><code class="code docutils literal notranslate"><span class="pre">MISSISSIPPI</span> <span class="pre">-&gt;</span> <span class="pre">IPSSM#PISSII</span> <span class="pre">-&gt;</span> <span class="pre">IP2SM#PI2S2I</span></code></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Este mismo procedimiento se aplica sobre la secuencia genómica a emplear, en el caso del genoma humano estaremos comprimiendo 25 palabras que suman &gt;3,000,000,000 caracteres</p>
+</div>
+</div>
+<div class="section" id="tries-y-busqueda-por-backtracking">
+<h1><em>Tries</em> y búsqueda por <em>backtracking</em><a class="headerlink" href="#tries-y-busqueda-por-backtracking" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="admonition-backtracking admonition">
+<p class="admonition-title">Backtracking</p>
+<p>Una vez que construimos nuestra BWT, podemos buscar palabras sobre dicha BWT, para ello usamos una estrategia de <em>backtracking</em></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="_images/backtrack_01.png"><img alt="backtrack_01" src="_images/backtrack_01.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/backtrack_04.png"><img alt="backtrack_04" src="_images/backtrack_04.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/backtrack_06.png"><img alt="backtrack_06" src="_images/backtrack_06.png" style="width: 150px;" /></a></p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-busquemos-la-palabra-inicial admonition">
+<p class="admonition-title">Busquemos la palabra inicial</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="_images/mississippi_01.png"><img alt="mississippi_01" src="_images/mississippi_01.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/mississippi_02.png"><img alt="mississippi_02" src="_images/mississippi_02.png" style="width: 150px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/mississippi_03.png"><img alt="mississippi_03" src="_images/mississippi_03.png" style="width: 150px;" /></a></p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-ahora-busquemos-solo-la-palabra-miss admonition">
+<p class="admonition-title">Ahora busquemos sólo la palabra MISS</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="_images/search_01.png"><img alt="search_01" src="_images/search_01.png" style="width: 200px;" /></a></p></td>
+<td rowspan="2"><p><a class="reference internal" href="_images/search_02.png"><img alt="search_02" src="_images/search_02.png" style="width: 200px;" /></a></p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Cómo podemos optimizar estas búsquedas?</p>
+<p>Para completar la estrategia de búsqueda los programas de mapeo de lecturas usan una estructura de datos llamada árbol de sufijos (<em>suffix tree</em>). Los árboles de sufijos son un tipo especial de <em>otra</em> estructura de datos llamada <em>trie</em> (del inglés <strong>retrieval</strong>).</p>
+<a class="reference internal image-reference" href="_images/trie.png"><img alt="_images/trie.png" src="_images/trie.png" style="width: 600px;" /></a>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Esto ocurre en nuestro programa miles de millones de veces de forma paralela! Esta combinación de algoritmos revolucionó el alineamiento de lecturas cortas</p>
+</div>
+</div>
+<div class="section" id="formatos-de-salida-sam">
+<h1>Formatos de salida: SAM<a class="headerlink" href="#formatos-de-salida-sam" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Una vez que concluye el proceso de mapeo de lecturas, los programas usualmente entregan un archivo en formato SAM (<em>sequence alignment and mapping</em>)</p>
+<p>Este formato es un estándar en bioinformática y la descripción completa del formato, podemos revisar la <a class="reference external" href="http://samtools.github.io/hts-specs/SAMv1.pdf">documentación oficial</a></p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Para fines de este curso, conoceremos la estructura mínima necesaria de dicho formato:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>Campo</p></th>
+<th class="head" rowspan="2"><p>Descripción</p></th>
+</tr>
+<tr class="row-even"></tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>1</p></td>
+<td rowspan="2"><p>Nombre de la lectura</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>2</p></td>
+<td rowspan="2"><p>FLAG</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>3</p></td>
+<td rowspan="2"><p>Nombre de la secuencia de referencia (genoma)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>4</p></td>
+<td rowspan="2"><p>Posición de la lectura en dicho genoma</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>5</p></td>
+<td rowspan="2"><p>Calidad del mapeo</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>6</p></td>
+<td rowspan="2"><p>CIGAR</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>7</p></td>
+<td rowspan="2"><p>Nombre de la lectura complementaria (su <em>mate</em>)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>8</p></td>
+<td rowspan="2"><p>Posición de la lectura complementaria</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>9</p></td>
+<td rowspan="2"><p>Longitud del segmento cubierto por el par</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>10</p></td>
+<td rowspan="2"><p>Secuencia de la lectura</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>11</p></td>
+<td rowspan="2"><p>Calidad de la lectura (ASCII)</p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Ejemplo de un archivo SAM:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">1</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">248956422</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">2</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">242193529</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">3</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">198295559</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">4</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">190214555</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">5</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">181538259</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">6</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">170805979</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">7</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">159345973</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">8</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">145138636</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">9</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">138394717</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">10</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">133797422</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">11</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">135086622</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">12</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">133275309</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">13</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">114364328</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">14</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">107043718</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">15</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">101991189</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">16</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">90338345</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">17</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">83257441</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">18</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">80373285</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">19</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">58617616</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">20</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">64444167</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">21</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">46709983</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="mi">22</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">50818468</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="n">X</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">156040895</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="n">Y</span>    <span class="n">LN</span><span class="p">:</span><span class="mi">57227415</span>
+<span class="nd">@SQ</span>     <span class="n">SN</span><span class="p">:</span><span class="n">MT</span>   <span class="n">LN</span><span class="p">:</span><span class="mi">16569</span>
+<span class="nd">@RG</span>     <span class="n">ID</span><span class="p">:</span><span class="n">test_data</span>    <span class="n">LB</span><span class="p">:</span><span class="n">test_data</span>    <span class="n">PL</span><span class="p">:</span><span class="n">Illumina</span>     <span class="n">SM</span><span class="p">:</span><span class="n">test_data</span>    <span class="n">PU</span><span class="p">:</span><span class="n">test_data</span>
+<span class="nd">@PG</span>     <span class="n">ID</span><span class="p">:</span><span class="n">bwa</span>  <span class="n">PN</span><span class="p">:</span><span class="n">bwa</span>  <span class="n">VN</span><span class="p">:</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">17</span><span class="o">-</span><span class="n">r1194</span><span class="o">-</span><span class="n">dirty</span>   <span class="n">CL</span><span class="p">:</span><span class="n">bwa</span> <span class="n">mem</span> <span class="o">-</span><span class="n">M</span> <span class="o">-</span><span class="n">t</span> <span class="mi">4</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bioinformatics</span><span class="o">/</span><span class="n">databases</span><span class="o">/</span><span class="n">Genome</span><span class="o">/</span><span class="n">Homo_sapiens_GRCh38</span><span class="o">.</span><span class="n">fasta</span> <span class="n">forward_reads</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span> <span class="n">reverse_reads</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">11107</span><span class="p">:</span><span class="mi">22080</span><span class="p">:</span><span class="mi">13075</span>       <span class="mi">163</span>     <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12153</span>   <span class="mi">199</span>     <span class="n">CTGCTGGCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGT</span>      <span class="n">BGJHIJHHHFKDJH</span><span class="o">/</span><span class="n">GIHHE5HG2IH6JFIHHHFJHFIDJHFIDGDGG</span><span class="o">/</span><span class="n">FJDKHFIFIHCIIGGEJH</span><span class="o">/</span><span class="n">FCIFI3</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span> <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">21103</span><span class="p">:</span><span class="mi">3654</span><span class="p">:</span><span class="mi">10675</span>        <span class="mi">163</span>     <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12257</span>   <span class="mi">303</span>     <span class="n">CTGCTGGCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGT</span>      <span class="n">BGJHIJHHHFKDJHDGIHHEJHGFIHFJ</span><span class="o">.</span><span class="n">IHACFJHFIDJHFI5GGGG</span><span class="o">/</span><span class="n">FJDKHFIFIHGIFGGEJ6G7CIFIB</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span> <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">21310</span><span class="p">:</span><span class="mi">18749</span><span class="p">:</span><span class="mi">17844</span>       <span class="mi">99</span>      <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12289</span>   <span class="mi">333</span>     <span class="n">CTGCTGGCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGT</span>      <span class="n">AFIFHJHGFFKDJHGHIIHEJHGFIHGJ</span><span class="o">/</span><span class="n">JHGHGJGFIDKHGIEGGHGHFKDKHFIFIHFJFGHEKHGFDIFIC</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">72</span><span class="n">M2S</span>      <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span> <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">23202</span><span class="p">:</span><span class="mi">12800</span><span class="p">:</span><span class="mi">17985</span>       <span class="mi">163</span>     <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12199</span>   <span class="mi">244</span>     <span class="n">CTGCTGGCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGT</span>      <span class="n">BGJHIJHHHFKDJHGGIHHEJHGFIHFJFIHHHFJHFIDJHFIDGDGGHFJDKHFIF5HGIIGCEJHG7CIFIC</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">73</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span> <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">11205</span><span class="p">:</span><span class="mi">4868</span><span class="p">:</span><span class="mi">3501</span> <span class="mi">163</span>     <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12224</span>   <span class="mi">269</span>     <span class="n">CTGCTGGCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGT</span>      <span class="n">BGJHIJ7HHFKDJHGAIH2EJHGFIHEJFIHHHFJHFIDJHFI</span><span class="nd">@GGGGHFJDKHFIFIHGIIGGEJFGFBIFI</span><span class="o">/</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">73</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span> <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">12201</span><span class="p">:</span><span class="mi">8069</span><span class="p">:</span><span class="mi">10334</span>        <span class="mi">99</span>      <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12262</span>   <span class="mi">308</span>     <span class="n">CTGCTGGCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGT</span>      <span class="n">AFIFHJHDFFGDJ12BI5HEJHGFIHGJ</span><span class="o">/</span><span class="n">JHGDGJ3</span><span class="o">/</span><span class="n">CDKHGCEGECGDE</span><span class="o">&gt;</span><span class="mi">26</span><span class="n">H</span><span class="o">/</span><span class="n">IFIHFJHGHEKHG7DIFIC</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span> <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">13110</span><span class="p">:</span><span class="mi">9149</span><span class="p">:</span><span class="mi">6398</span> <span class="mi">163</span>     <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12202</span>   <span class="mi">248</span>     <span class="n">CTGCTGGCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGT</span>      <span class="n">BGJHIJHHHFKDJHGGIHHEJHGFIHFJFIHHHFJHFIDJHFIDGGGGHFJDKHFIFIHGIIGGEJHGFCIFIC</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span> <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">13403</span><span class="p">:</span><span class="mi">15882</span><span class="p">:</span><span class="mi">14640</span>       <span class="mi">163</span>     <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12244</span>   <span class="mi">289</span>     <span class="n">CTGCTGGCCTGTGCAAGTGTGCAACCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGATCCATGACTAGAGT</span>      <span class="mi">6</span><span class="n">GJ</span><span class="o">/</span><span class="mi">76</span><span class="n">HE0F5DJ</span><span class="o">-</span><span class="p">,</span><span class="o">-</span><span class="mi">51</span><span class="n">JEJA</span><span class="p">,</span><span class="o">--/</span><span class="mi">6</span><span class="n">G</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">HH</span><span class="p">:</span><span class="n">J2AI152</span><span class="o">.</span><span class="mi">51</span><span class="n">D1GGH651K2F5F5F</span><span class="o">./</span><span class="mi">0</span><span class="n">G</span><span class="p">,</span><span class="n">EI</span><span class="o">.</span><span class="n">A7B6</span><span class="o">/</span><span class="mi">6</span><span class="n">C</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">73</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">14</span><span class="n">C2G6G35G5C7</span>      <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">5</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">49</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">49</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">21506</span><span class="p">:</span><span class="mi">17407</span><span class="p">:</span><span class="mi">15401</span>       <span class="mi">163</span>     <span class="mi">1</span>       <span class="mi">12028</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12137</span>   <span class="mi">182</span>     <span class="n">CTGCTGCCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGT</span>      <span class="n">BGJHI6</span><span class="o">-</span><span class="n">GCFGDGHDG5E2EJHGFID6JABH</span><span class="p">,</span><span class="o">-</span><span class="n">E5HFIDJ2AID1G5FHDHDK</span><span class="p">;</span><span class="n">FIFCF</span><span class="nd">@IA</span><span class="o">/</span><span class="n">G</span><span class="o">/</span><span class="mi">5</span><span class="n">BGFB6FIC</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">73</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">6</span><span class="n">G67</span>       <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">1</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">69</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">69</span>
+<span class="n">NB502037</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">HV7GWBGXC</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">13110</span><span class="p">:</span><span class="mi">7444</span><span class="p">:</span><span class="mi">7717</span> <span class="mi">163</span>     <span class="mi">1</span>       <span class="mi">12034</span>   <span class="mi">0</span>       <span class="mi">74</span><span class="n">M</span>     <span class="o">=</span>       <span class="mi">12095</span>   <span class="mi">135</span>     <span class="n">GCCTGTGCCAGGGTGCAAGCTGAGCACTGGAGTGGAGTTTTCCTGTGGAGAGGAGCCATGCCTAGAGTGGGATG</span>      <span class="n">BFFIKDHEHB52HD5HGFIIF9FIH</span><span class="p">,</span><span class="n">HFGHFJ1GEFI1GGGCCFGDJHGIFIIFIHGGDKH</span><span class="o">/</span><span class="n">F</span><span class="p">(</span><span class="mi">5</span><span class="n">CI1H3GFD3</span>      <span class="n">MC</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span><span class="n">M</span>        <span class="n">MD</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="mi">74</span> <span class="n">PG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">MarkDuplicates</span>     <span class="n">RG</span><span class="p">:</span><span class="n">Z</span><span class="p">:</span><span class="n">NGS023</span>     <span class="n">NM</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span>  <span class="n">AS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span> <span class="n">XS</span><span class="p">:</span><span class="n">i</span><span class="p">:</span><span class="mi">74</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="flag">
+<h1>FLAG<a class="headerlink" href="#flag" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El FLAG es un estándar dentro de la especificación del formato SAM que nos brinda información estructural acerca de la lectura y como mapea sobre la referencia</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Los códigos de los FLAGs tienen una base binaria, de modo que los códigos son únicos, y cada combinación de bytes indica una situación específica para la lectura correspondiente</p>
+<p>Los códigos del FLAG pueden ser consultados en la página del <a class="reference external" href="https://broadinstitute.github.io/picard/explain-flags.html">Broad Institute</a></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>Byte</p></th>
+<th class="head" rowspan="2"><p>Significado</p></th>
+</tr>
+<tr class="row-even"></tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>1</p></td>
+<td rowspan="2"><p>read paired</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>2</p></td>
+<td rowspan="2"><p>read mapped in proper pair</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>4</p></td>
+<td rowspan="2"><p>read unmapped</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>8</p></td>
+<td rowspan="2"><p>mate unmapped</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>16</p></td>
+<td rowspan="2"><p>read reverse strand</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>32</p></td>
+<td rowspan="2"><p>mate reverse strand</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>64</p></td>
+<td rowspan="2"><p>first in pair</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>128</p></td>
+<td rowspan="2"><p>second in pair</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>256</p></td>
+<td rowspan="2"><p>not primary alignment</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>512</p></td>
+<td rowspan="2"><p>read fails platform/vendor quality checks</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>1024</p></td>
+<td rowspan="2"><p>read is PCR or optical duplicate</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>2048</p></td>
+<td rowspan="2"><p>supplementary alignment</p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-ejemplos-de-flags admonition">
+<p class="admonition-title">Ejemplos de FLAGs</p>
+<img alt="_images/flags.png" src="_images/flags.png" />
+</div>
+</div>
+<div class="section" id="concise-idiosyncratic-gapped-alignment-report-cigar-para-los-amigos">
+<h1>Concise Idiosyncratic Gapped Alignment Report (CIGAR para los amigos)<a class="headerlink" href="#concise-idiosyncratic-gapped-alignment-report-cigar-para-los-amigos" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Cómo su nombre lo indica, es un reporte conciso acerca de cómo una lectura alinea con respecto de una secuencia de referencia</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>Clave</p></th>
+<th class="head" rowspan="2"><p>Significado</p></th>
+</tr>
+<tr class="row-even"></tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>M</p></td>
+<td rowspan="2"><p>Número de matches</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>I</p></td>
+<td rowspan="2"><p>Inserciones con respecto a la referencia</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>D</p></td>
+<td rowspan="2"><p>Deleciones con respecto a la referencia</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>N</p></td>
+<td rowspan="2"><p>Región saltada con respecto a la referencia</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>S</p></td>
+<td rowspan="2"><p>Soft clipping*</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>H</p></td>
+<td rowspan="2"><p>Hard clipping**</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>P</p></td>
+<td rowspan="2"><p>Padding (sólo ensambles de novo)</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>=</p></td>
+<td rowspan="2"><p>Match completo</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>X</p></td>
+<td rowspan="2"><p>Mismatch completo</p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+<div class="admonition-ejemplo-de-cigars admonition">
+<p class="admonition-title">Ejemplo de CIGARs</p>
+<img alt="_images/cigar.png" src="_images/cigar.png" />
+</div>
+<div class="admonition-campos-adicionales-agregados-por-bwa admonition">
+<p class="admonition-title">Campos adicionales agregados por BWA</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 94%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tag</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NM</p></td>
+<td><p>Edit distance</p></td>
+</tr>
+<tr class="row-odd"><td><p>MD</p></td>
+<td><p>Mismatching positions/bases</p></td>
+</tr>
+<tr class="row-even"><td><p>AS</p></td>
+<td><p>Alignment score</p></td>
+</tr>
+<tr class="row-odd"><td><p>BC</p></td>
+<td><p>Barcode sequence</p></td>
+</tr>
+<tr class="row-even"><td><p>X0</p></td>
+<td><p>Number of best hits</p></td>
+</tr>
+<tr class="row-odd"><td><p>X1</p></td>
+<td><p>Number of suboptimal hits found by BWA</p></td>
+</tr>
+<tr class="row-even"><td><p>XN</p></td>
+<td><p>Number of ambiguous bases in the referenece</p></td>
+</tr>
+<tr class="row-odd"><td><p>XM</p></td>
+<td><p>Number of mismatches in the alignment</p></td>
+</tr>
+<tr class="row-even"><td><p>XO</p></td>
+<td><p>Number of gap opens</p></td>
+</tr>
+<tr class="row-odd"><td><p>XG</p></td>
+<td><p>Number of gap extentions</p></td>
+</tr>
+<tr class="row-even"><td><p>XT</p></td>
+<td><p>Type: Unique/Repeat/N/Mate-sw</p></td>
+</tr>
+<tr class="row-odd"><td><p>XA</p></td>
+<td><p>Alternative hits; format: (chr,pos,CIGAR,NM;)*</p></td>
+</tr>
+<tr class="row-even"><td><p>XS</p></td>
+<td><p>Suboptimal alignment score</p></td>
+</tr>
+<tr class="row-odd"><td><p>XF</p></td>
+<td><p>Support from forward/reverse alignment</p></td>
+</tr>
+<tr class="row-even"><td><p>XE</p></td>
+<td><p>Number of supporting seeds</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="filtrado-de-lecturas">
+<h1>Filtrado de lecturas<a class="headerlink" href="#filtrado-de-lecturas" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Una vez que entendemos cómo está estructurado el formato SAM, podemos ahora hacer manipulación de nuestros archivos para que sólo conservemos la información util</p>
+<ol class="arabic simple" start="0">
+<li><p>Recuerda tener tu entorno gatk activado <code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">gatk</span></code></p></li>
+<li><p>Transformamos nuestro archivo SAM a un formato más amigable: formato BAM</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ samtools view -b -h -@ 4 -f 3 -L TSO_xt_hg38.bed -o S3.tmp.bam S3.sam
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Ordenamos por coordenadas nuestro archivo BAM</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ samtools sort -l 9 -@ 4 -o S3.bam S3.tmp.bam
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Indexamos nuestro archivo sorteado</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ samtools index S3.bam
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, @atgenomics, @vflorelo, @dianolasa, @zorbax
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .admonition-title").show();
+        $(".toggle .admonition-title").click(function() {
+            $(this).parent().children().not(".admonition-title").toggle(400);
+            $(this).parent().children(".admonition-title").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

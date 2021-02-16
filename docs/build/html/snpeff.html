@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>De aquí a dónde? &mdash; documentación de Call me by your reads - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Call me by your reads
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">De aquí a dónde?</a></li>
+<li><a class="reference internal" href="#instalacion-de-snpeff">Instalación de snpEff</a></li>
+<li><a class="reference internal" href="#anotacion-de-las-variantes-con-snpeff">Anotación de las variantes con snpEff</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Call me by your reads</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>De aquí a dónde?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/snpeff.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="de-aqui-a-donde">
+<h1>De aquí a dónde?<a class="headerlink" href="#de-aqui-a-donde" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>La identificación de las variantes genómicas es sólo el principio, en realidad esto que hicimos solamente nos dice: el individuo tiene N variantes en estas posiciones.</p>
+<p>Qué hago con mis variantes?</p>
+<p>Existen a la fecha 3 grandes softwares para anotar las variantes</p>
+<ol class="arabic">
+<li><p>Funcotator como parte de GATK4</p>
+<blockquote>
+<div><ul>
+<li><p>Ventajas</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Tiene integración de distintas bases de datos</p></li>
+<li><p>Puedes correrlo dentro de GATK4</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Desventajas</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Sus bases de datos pesan muchísimo (~30Gb con compresión máxima)</p></li>
+<li><p>Es moderadamente limitado a humano</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>snpEff de Pablo Cingolani</p>
+<blockquote>
+<div><ul>
+<li><p>Ventajas</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Tiene integración de distintas bases de datos</p></li>
+<li><p>Puedes correrlo dentro de GATK4</p></li>
+<li><p><strong>Incluye bases de datos de todos los organismos secuenciados!</strong></p></li>
+<li><p><strong>Puedes construir tus bases de datos!</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Desventajas</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Su sintaxis es algo inconsistente</p></li>
+<li><p>Si manipulas erroneamente el archivo de configuración puedes fastidiar tu instalación</p></li>
+<li><p>Puede consumir algo de RAM y si se satura el sistema puede anotar erroneamente tus variantes</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Variant Effect Predictor de Ensembl</p>
+<blockquote>
+<div><ul>
+<li><p>Ventajas</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Tiene interfaz web</p></li>
+<li><p>Acepta múltiples formatos</p></li>
+<li><p>Incluye múltiples bases de datos</p></li>
+<li><p>Incluye múltiples algoritmos de clasificación</p></li>
+<li><p>Tiene acceso programático a través de su API</p></li>
+<li><p>Puedes instalarlo en tu máquina</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Desventajas</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Sólo es útil para organismos módelo</p></li>
+<li><p>Su instalación es algo voluminosa</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>En este taller emplearemos snpEff y Ensembl VEP</p>
+</div>
+<div class="section" id="instalacion-de-snpeff">
+<h1>Instalación de snpEff<a class="headerlink" href="#instalacion-de-snpeff" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En este paso necesitamos tener el entorno de gatk activado <code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">gatk</span></code></p>
+<ol class="arabic simple">
+<li><p>Vamos a nuestro directorio <code class="code docutils literal notranslate"><span class="pre">$HOME</span></code>, as usual</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Bajamos la versión actual de snpEff</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://snpeff.blob.core.windows.net/versions/snpEff_latest_core.zip
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Descomprimimos</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unzip snpEff_latest_core.zip
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Nos dirigimos a la carpeta de snpEff</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/snpEff
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Cargamos el archivo de configuración de ATG</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/vflorelo/Call-me-by-your-reads/master/atg.config
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Descargamos los archivos correspondientes a la versión 99 de Ensembl (GRCh38 release 99)</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ java -jar snpEff.jar download GRCh38.99
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Agregamos los directorios de dbSNP y clinvar al directorio de snpEff</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+
+$ mkdir -p $HOME/snpEff/db/GRCh38/clinvar
+
+$ mkdir -p $HOME/snpEff/db/GRCh38/dbSnp/
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Agregamos un link que apunta a clinvar</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/snpEff/db/GRCh38/clinvar
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ln -s /usr/local/bioinformatics/db/GRCh38/clinvar/clinvar.vcf.gz .
+</pre></div>
+</div>
+<p>8.1 Indexamos nuestro archivo de variantes con bgzip (parte de samtools)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bgzip --reindex clinvar.vcf.gz
+</pre></div>
+</div>
+<p>8.2 Indexamos nuestro archivo de variantes con tabix (parte de samtools)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tabix -p vcf clinvar.vcf.gz
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Agregamos un link que apunta a dbSNP</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/snpEff/db/GRCh38/dbSnp
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ln -s /usr/local/bioinformatics/db/GRCh38/dbSnp/00-All.vcf.gz .
+</pre></div>
+</div>
+<p>9.1 Indexamos nuestro archivo de variantes con bgzip (parte de samtools)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bgzip --reindex 00-All.vcf.gz
+</pre></div>
+</div>
+<p>9.2 Indexamos nuestro archivo de variantes con tabix (parte de samtools)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tabix -p vcf 00-All.vcf.gz
+</pre></div>
+</div>
+</div>
+<div class="section" id="anotacion-de-las-variantes-con-snpeff">
+<h1>Anotación de las variantes con snpEff<a class="headerlink" href="#anotacion-de-las-variantes-con-snpeff" title="Enlazar permanentemente con este título">¶</a></h1>
+<ol class="arabic simple">
+<li><p>Vamos a nuestro directorio <code class="code docutils literal notranslate"><span class="pre">$HOME</span></code>, as usual</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Preparamos el escenario</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p $HOME/05_snpeff
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/05_snpeff
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp $HOME/04_gatk/S3_annotated_qd_dp_filtered_variants.vcf .
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Anotamos los efectos primarios de nuestras variantes</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ java -jar $HOME/snpEff/snpEff.jar eff GRCh38.99 -c $HOME/snpEff/atg.config -canon S3_annotated_qd_dp_filtered_variants.vcf -verbose &gt; S3_snpEff.vcf
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Anotamos las frecuencias alélicas de nuestras variantes a partir de la información de dbSNP</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ java -jar $HOME/snpEff/SnpSift.jar annotate -c $HOME/snpEff/atg.config -noId -dbsnp -verbose S3_snpEff.vcf &gt; S3_snpEff_dbsnp.vcf
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Anotamos la clasificación de las variantes a partir de la información de clinvar</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ java -jar $HOME/snpEff/SnpSift.jar annotate -c $HOME/snpEff/atg.config -noId -clinvar -verbose S3_snpEff_dbsnp.vcf &gt; S3_snpEff_dbsnp_clinvar.vcf
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Obtenemos variantes asociadas a un gen que nos interese</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ java -jar $HOME/snpEff/SnpSift.jar filter &quot;ANN[*].GENE = &#39;RYR1&#39;&quot; S3_snpEff_dbsnp_clinvar.vcf &gt; S3_RYR1.vcf
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ java -jar $HOME/snpEff/SnpSift.jar filter &quot;ANN[*].GENE = &#39;RYR2&#39;&quot; S3_snpEff_dbsnp_clinvar.vcf &gt; S3_RYR2.vcf
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Visualizamos nuestra variante y sus efectos en <a class="reference external" href="https://www.ensembl.org/info/docs/tools/vep/index.html">Ensembl VEP</a></p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>En nuestra terminal <strong>local</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scp -i atg.pem vflorelo@atgenomics.ddns.net:05_snpeff/S3_RYR1.vcf .
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scp -i atg.pem vflorelo@atgenomics.ddns.net:05_snpeff/S3_RYR2.vcf .
+</pre></div>
+</div>
+</div>
+<p>6.1 Subimos nuestro archivo a Ensembl VEP y esperamos</p>
+<ol class="arabic simple" start="7">
+<li><p>Interpretación de resultados</p></li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, @atgenomics, @vflorelo, @dianolasa, @zorbax
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .admonition-title").show();
+        $(".toggle .admonition-title").click(function() {
+            $(this).parent().children().not(".admonition-title").toggle(400);
+            $(this).parent().children(".admonition-title").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

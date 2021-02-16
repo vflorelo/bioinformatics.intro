@@ -1,0 +1,859 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introducción &mdash; documentación de Call me by your reads - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Call me by your reads
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Introducción</a></li>
+<li><a class="reference internal" href="#la-bendita-instancia">La bendita instancia</a></li>
+<li><a class="reference internal" href="#consideraciones-y-conceptos">Consideraciones y conceptos</a><ul>
+<li><a class="reference internal" href="#shell"><em>Shell</em></a></li>
+<li><a class="reference internal" href="#terminal"><em>Terminal</em></a></li>
+<li><a class="reference internal" href="#prompt"><em>Prompt</em></a></li>
+<li><a class="reference internal" href="#comando"><em>Comando</em></a></li>
+<li><a class="reference internal" href="#opcion"><em>Opción</em></a></li>
+<li><a class="reference internal" href="#argumento"><em>Argumento</em></a></li>
+<li><a class="reference internal" href="#combinaciones"><em>Combinaciones</em></a></li>
+<li><a class="reference internal" href="#path"><code class="code docutils literal notranslate"><span class="pre">$PATH</span></code></a></li>
+<li><a class="reference internal" href="#uso-de-mayusculas-y-minusculas"><em>Uso de</em> <strong>mayúsculas</strong> <em>y</em> <strong>minúsculas</strong></a></li>
+<li><a class="reference internal" href="#uso-de-caracteres-especiales"><em>Uso de caracteres especiales</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comandos-basicos">Comandos básicos</a><ul>
+<li><a class="reference internal" href="#ls"><code class="code docutils literal notranslate"><span class="pre">ls</span></code></a></li>
+<li><a class="reference internal" href="#cd"><code class="code docutils literal notranslate"><span class="pre">cd</span></code></a></li>
+<li><a class="reference internal" href="#mkdir"><code class="code docutils literal notranslate"><span class="pre">mkdir</span></code></a></li>
+<li><a class="reference internal" href="#cp"><code class="code docutils literal notranslate"><span class="pre">cp</span></code></a></li>
+<li><a class="reference internal" href="#mv"><code class="code docutils literal notranslate"><span class="pre">mv</span></code></a></li>
+<li><a class="reference internal" href="#rm"><code class="code docutils literal notranslate"><span class="pre">rm</span></code></a></li>
+<li><a class="reference internal" href="#cat"><code class="code docutils literal notranslate"><span class="pre">cat</span></code></a></li>
+<li><a class="reference internal" href="#less"><code class="code docutils literal notranslate"><span class="pre">less</span></code></a></li>
+<li><a class="reference internal" href="#head"><code class="code docutils literal notranslate"><span class="pre">head</span></code></a></li>
+<li><a class="reference internal" href="#tail"><code class="code docutils literal notranslate"><span class="pre">tail</span></code></a></li>
+<li><a class="reference internal" href="#wc"><code class="code docutils literal notranslate"><span class="pre">wc</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Call me by your reads</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introducción</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/linux.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduccion">
+<h1>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Existen múltiples programas para el análisis de secuencias biológicas, algunos de ellos disponibles para Windows, GNU-Linux, OSX e incluso para android y iOS.</p>
+<p>No obstante, los avances en las tecnologías de secuenciación y de obtención de datos proteícos a gran escala generan archivos que son dificilmente analizables en sistemas operativos como Windows u OSX, de modo que para operar los programas de más alto desempeño e interoperabilidad, requerimos aprender un poco (o un mucho) de GNU-Linux.</p>
+</div>
+<div class="section" id="la-bendita-instancia">
+<h1>La bendita instancia<a class="headerlink" href="#la-bendita-instancia" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En esta ocasión te preparamos una máquina especial a la que puedes accesar en el horario del curso. Es una instancia en Amazon Web Services y de ahora en adelante nos referiremos a esta máquina como «la instancia»</p>
+<p>Para ingresar a la instancia basta con ingresar a la dirección <a class="reference external" href="https://atgenomics.ddns.net:9090">https://atgenomics.ddns.net:9090</a> en tu navegador.</p>
+<p>Por compatibilidad y facilidad sugerimos hacer esto en Google chrome, no obstante otros navegadores funcionan bien.</p>
+<p>Para entrar a la instancia, deberás ingresar tu nombre de usuario y tu contraseña.</p>
+</div>
+<div class="section" id="consideraciones-y-conceptos">
+<h1>Consideraciones y conceptos<a class="headerlink" href="#consideraciones-y-conceptos" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Para el uso óptimo de la línea de comandos debemos tener en consideración las siguientes definiciones y precauciones</p>
+</div>
+<div class="section" id="shell">
+<h2><em>Shell</em><a class="headerlink" href="#shell" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Es el intérprete entre el usuario y las aplicaciones</p>
+<ul class="simple">
+<li><p>El shell recibe una entrada a manera de comandos</p></li>
+<li><p>Estos comandos operan a través de aplicaciones</p></li>
+<li><p>Las aplicaciones interactuan con el <em>kernel</em> controlando el procesador, la memoria RAM y el disco de la máquina</p></li>
+</ul>
+</div>
+<div class="section" id="terminal">
+<h2><em>Terminal</em><a class="headerlink" href="#terminal" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La terminal o línea de comandos es una interfáz no gráfica con la cúal el usuario puede interactuar con el sistema. A pesar de su simpleza es una interfaz sumamente poderosa y eficiente, ya que nos permite ver que es lo que está ocurriendo tras bambalinas mientras un programa se está ejecutando. Es un estándar en el cómputo y seguirá siendolo por mucho tiempo más.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/commitstrip_cli.jpg"><img alt="Your friendly neighbour the terminal" src="_images/commitstrip_cli.jpg" style="width: 600px;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="prompt">
+<h2><em>Prompt</em><a class="headerlink" href="#prompt" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl>
+<dt>El <em>prompt</em> es la linea en la terminal que nos indica que nuestra consola está responsiva y que puede aceptar comandos del usuario</dt><dd><div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p>Si no hay prompt no podemos mandar comandos</p>
+</div>
+<a class="reference internal image-reference" href="_images/terminal_01_prompt.png"><img alt="No prompt, no soup for you!" src="_images/terminal_01_prompt.png" style="width: 600px;" /></a>
+</dd>
+</dl>
+</div>
+<div class="section" id="comando">
+<h2><em>Comando</em><a class="headerlink" href="#comando" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Un comando es la primera palabra que va después del prompt (o después de un pipe &quot;|&quot;, eso lo veremos en parseo ), un comando es esencialmente un elemento ejecutable que puede ser un programa binario o un script</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>El comando debe estar presente en el <code class="code docutils literal notranslate"><span class="pre">$PATH</span></code> para que la terminal lo pueda ejecutar</p>
+</div>
+<a class="reference internal image-reference" href="_images/terminal_02_command.png"><img alt="_images/terminal_02_command.png" src="_images/terminal_02_command.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="opcion">
+<h2><em>Opción</em><a class="headerlink" href="#opcion" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Ciertos comandos y programas pueden comportarse distinto si le pasamos una o más opciones.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Las opciones se especifican con el signo “-” o con los signos “--”</p>
+</div>
+<a class="reference internal image-reference" href="_images/terminal_03_option.png"><img alt="option" src="_images/terminal_03_option.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="argumento">
+<h2><em>Argumento</em><a class="headerlink" href="#argumento" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Un argumento es una o más palabras que vienen después de un comando, pueden ir antes o después de una opción (o no llevar opciones incluso)</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Los argumentos no llevan “-” ni “--” y en ocasiones conviene delimitarlos con comillas</p>
+</div>
+<a class="reference internal image-reference" href="_images/terminal_04_argument.png"><img alt="argument" src="_images/terminal_04_argument.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="combinaciones">
+<h2><em>Combinaciones</em><a class="headerlink" href="#combinaciones" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En muchas ocasiones necesitaremos de opciones y de argumentos de modo que es indispensable saber como combinarlos</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>El orden de las opciones y argumentos es fundamental en la ejecución de los comandos que usaremos a partir del día 3</p>
+</div>
+<a class="reference internal image-reference" href="_images/terminal_05_opt_arg.png"><img alt="combination" src="_images/terminal_05_opt_arg.png" style="width: 600px;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="path">
+<h2><code class="code docutils literal notranslate"><span class="pre">$PATH</span></code><a class="headerlink" href="#path" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En unix/linux la variable de entorno <code class="code docutils literal notranslate"><span class="pre">$PATH</span></code> contiene el conjunto de directorios que alberga aplicaciones en nuestro sistema</p>
+<blockquote>
+<div><div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p>Es una variable muy sensible, y moverla sin conocimiento puede tener consecuencias que afecten la sesión del usuario, hay que modificarla lo menos posible</p>
+</div>
+<a class="reference internal image-reference" href="_images/path.png"><img alt="path" src="_images/path.png" style="width: 600px;" /></a>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Si queremos instalar un programa nuevo, lo podemos colocar en cualquiera de las carpetas enlistadas anteriormente y lo podemos invocar desde cualquier sitio en nuestra terminal</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="uso-de-mayusculas-y-minusculas">
+<h2><em>Uso de</em> <strong>mayúsculas</strong> <em>y</em> <strong>minúsculas</strong><a class="headerlink" href="#uso-de-mayusculas-y-minusculas" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p>Los sistemas unix/linux son sensibles al uso de <strong>mayúsculas</strong> y <strong>minúsculas</strong>!</p>
+<p>Es importante revisar siempre lo que ingresas en la terminal antes de mandar cualquier instrucción</p>
+</div>
+</div>
+<div class="section" id="uso-de-caracteres-especiales">
+<h2><em>Uso de caracteres especiales</em><a class="headerlink" href="#uso-de-caracteres-especiales" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Existen caracteres con un significado específico del sistema, en consecuencia, se deben tratar de forma especial.</p>
+<p>Estos caracteres son los siguientes y por lo general los ubicas en tu teclado en la barra numérica:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>&#64;</p></td>
+<td rowspan="2"><p>#</p></td>
+<td rowspan="2"><p>$</p></td>
+<td rowspan="2"><p>%</p></td>
+<td rowspan="2"><p>^</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>&amp;</p></td>
+<td rowspan="2"><p>*</p></td>
+<td rowspan="2"><p>-</p></td>
+<td rowspan="2"><p>+</p></td>
+<td rowspan="2"><p>=</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>( )</p></td>
+<td rowspan="2"><p>{ }</p></td>
+<td rowspan="2"><p>[ ]</p></td>
+<td rowspan="2"><p>;</p></td>
+<td rowspan="2"><p>:</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>,</p></td>
+<td rowspan="2"><p>'</p></td>
+<td rowspan="2"><p>&quot;</p></td>
+<td rowspan="2"><p>&lt;</p></td>
+<td rowspan="2"><p>&gt;</p></td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2"><p>.</p></td>
+<td rowspan="2"><p>/</p></td>
+<td rowspan="2"><p>?</p></td>
+<td rowspan="2"><p>\</p></td>
+<td rowspan="2"><p>|</p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Si alguno de nuestros archivos tiene espacios en su nombre (o caracteres especiales), la terminal necesita saber que estos espacios son parte del mismo argumento</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat mi archivo.txt
+cat: mi: No such file or directory
+cat: archivo.txt: No such file or directory
+</pre></div>
+</div>
+</div>
+<p>Cuando hicimos el comando <code class="code docutils literal notranslate"><span class="pre">cat</span> <span class="pre">mi</span> <span class="pre">archivo.txt</span></code>, lo que está ocurriendo es que <code class="code docutils literal notranslate"><span class="pre">cat</span></code> espera dos archivos, un archivo llamado &quot;mi&quot;, y un archivo llamado &quot;archivo.txt&quot;.</p>
+<p>Al no existir estos archivos, la terminal nos arroja un mensaje de error</p>
+<p>Esto lo solucionamos de dos formas:</p>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<ul>
+<li><p>Encerrando 'mi archivo.txt' entre comillas (dobles o sencillas):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat &quot;mi archivo.txt&quot;
+Hola mundo!
+</pre></div>
+</div>
+</li>
+<li><p><em>Escapando</em> el espacio con el simbolo “\”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat mi\ archivo.txt
+Hola mundo
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Ambas soluciones hacen que «mi archivo.txt» sea un solo argumento en vez de dos.</p>
+<p>Estas soluciones funcionan también para el resto de los caracteres especiales.</p>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="comandos-basicos">
+<h1>Comandos básicos<a class="headerlink" href="#comandos-basicos" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En esta sección encontraremos comandos básicos para el manejo de archivos, es indispensable que tengamos familiaridad con estos comandos antes de continuar con la manipulación de archivos</p>
+<div class="section" id="ls">
+<h2><code class="code docutils literal notranslate"><span class="pre">ls</span></code><a class="headerlink" href="#ls" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>List, nos indica que elementos hay en el directorio actual</p>
+<div class="toggle admonition">
+<p class="admonition-title">Opciones de <code class="code docutils literal notranslate"><span class="pre">ls</span></code></p>
+<ul class="simple">
+<li><p>Listado de los archivos en formato extendido ( <code class="code docutils literal notranslate"><span class="pre">-l</span></code> )</p></li>
+<li><p>Listado de los archivos en formato extendido en lenguaje humano ( <code class="code docutils literal notranslate"><span class="pre">-l</span> <span class="pre">-h</span></code> )</p></li>
+<li><p>Listado de los archivos incluido archivos ocultos ( <code class="code docutils literal notranslate"><span class="pre">-a</span></code> )</p></li>
+<li><p>Listado de los archivos en orden cronológico ( <code class="code docutils literal notranslate"><span class="pre">-l</span> <span class="pre">-h</span> <span class="pre">-t</span></code> )</p></li>
+<li><p>Listado de los archivos en orden alfanumérico reverso ( <code class="code docutils literal notranslate"><span class="pre">-l</span> <span class="pre">-h</span> <span class="pre">-r</span></code> )</p></li>
+<li><p>Listado de los archivos en orden cronológico reverso ( <code class="code docutils literal notranslate"><span class="pre">-l</span> <span class="pre">-h</span> <span class="pre">-r</span> <span class="pre">-t</span></code> )</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="cd">
+<h2><code class="code docutils literal notranslate"><span class="pre">cd</span></code><a class="headerlink" href="#cd" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><em>Change Directory</em> nos cambia al directorio que le indiquemos</p>
+<div class="toggle admonition">
+<p class="admonition-title">Modos de operación de <code class="code docutils literal notranslate"><span class="pre">cd</span></code></p>
+<ul>
+<li><p>Dirigirse a un directorio dentro del directorio actual:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/home/vflorelo
+
+$ ls
+dia_01
+
+$ cd dia_01
+
+$ pwd
+/home/vflorelo/dia_01
+
+$ ls
+Homo_sapiens_GRCh38.fasta.fai
+test_data_variants.tsv
+test_data_variants.vcf
+</pre></div>
+</div>
+</li>
+<li><p>Dirigirse a un directorio usando una ruta absoluta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/home/vflorelo
+
+$ cd /home/vflorelo/dia_01
+
+$ pwd
+/home/vflorelo/dia_01
+
+$ cd /usr/local/bioinformatics
+
+$ pwd
+/usr/local/bioinformatics
+
+$ ls
+bcftools
+bin
+bwa
+data
+htslib
+include
+lib
+libexec
+samtools
+share
+
+$ cd /home/vflorelo/dia_01
+
+$ pwd
+/home/vflorelo/dia_01
+</pre></div>
+</div>
+</li>
+<li><p>Dirigirse al directorio superior:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/home/vflorelo/dia_01
+
+$ cd ..
+
+$ pwd
+/home/vflorelo
+</pre></div>
+</div>
+</li>
+<li><p>Dirigirse a un directorio usando una ruta relativa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/home/vflorelo/dia_01
+
+$ cd ../dia_02
+
+$ pwd
+/home/vflorelo/dia_02
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mkdir">
+<h2><code class="code docutils literal notranslate"><span class="pre">mkdir</span></code><a class="headerlink" href="#mkdir" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Make Directory, crea un directorio con el nombre que le indiquemos</p>
+<div class="toggle admonition">
+<p class="admonition-title">Modos de operación de <code class="code docutils literal notranslate"><span class="pre">mkdir</span></code></p>
+<ul>
+<li><p>Crear a un directorio dentro del directorio actual:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/home/vflorelo
+
+$ ls
+dia_01
+
+$ mkdir dia_02
+
+$ ls
+dia_01
+dia_02
+</pre></div>
+</div>
+</li>
+<li><p>Crear un directorio usando una ruta absoluta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/home/vflorelo
+
+$ mkdir /home/vflorelo/dia_03
+
+$ pwd
+/home/vflorelo
+
+$ ls
+dia_01
+dia_02
+dia_03
+</pre></div>
+</div>
+</li>
+<li><p>Crear un directorio usando una ruta relativa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/home/vflorelo/dia_01
+
+$ mkdir ../dia_04
+
+$ cd ..
+
+$ pwd
+/home/vflorelo
+
+$ ls
+dia_01
+dia_02
+dia_03
+dia_04
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="cp">
+<h2><code class="code docutils literal notranslate"><span class="pre">cp</span></code><a class="headerlink" href="#cp" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Copy, copia un archivo a un directorio (o al mismo directorio pero con nombre diferente)</p>
+<blockquote>
+<div><div class="toggle admonition">
+<p class="admonition-title">Modos de operación de <code class="code docutils literal notranslate"><span class="pre">cp</span></code></p>
+<ul>
+<li><p>Copiar el contenido de un archivo a otro archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp mi_archivo.txt mi_nuevo_archivo.txt
+$ cat mi_nuevo_archivo.txt
+Hola mundo!
+</pre></div>
+</div>
+</li>
+<li><p>Copiar el archivo desde el directorio actual a otro directorio:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+mi_archivo.txt otro_directorio
+$ ls otro_directorio
+
+$ cp mi_archivo.txt otro_directorio
+$ ls otro_directorio
+mi_archivo.txt
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Si no existe el directorio “otro_directorio”, cp creará un nuevo <strong>archivo</strong> llamado “otro_directorio”</p>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mv">
+<h2><code class="code docutils literal notranslate"><span class="pre">mv</span></code><a class="headerlink" href="#mv" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Move, mueve un archivo de un lugar a otro (o le cambia el nombre al archivo)</p>
+<blockquote>
+<div><div class="toggle admonition">
+<p class="admonition-title">Modos de operacion de <code class="code docutils literal notranslate"><span class="pre">mv</span></code></p>
+<ul>
+<li><p>Cambia el nombre de un archivo a otro archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv mi_archivo.txt mi_nuevo_archivo.txt
+
+$ cat mi_nuevo_archivo.txt
+Hola mundo!
+
+$ cat mi_archivo.txt
+cat: mi_archivo.txt: No such file or directory
+</pre></div>
+</div>
+</li>
+<li><p>Mover el archivo desde el directorio actual a otro directorio:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+mi_archivo.txt otro_directorio
+
+$ ls otro_directorio
+
+$ mv mi_archivo.txt otro_directorio
+
+$ ls
+otro_directorio
+
+$ ls otro_directorio
+mi_archivo.txt
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Si no existe el directorio «otro_directorio», mv le cambiará el nombre a “mi_archivo.txt” y se llamará “otro_directorio”, “mi_archivo.txt” no existirá más</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p>Si ya existe un <strong>archivo</strong> con el nombre que le indiquemos a <code class="code docutils literal notranslate"><span class="pre">mv</span></code> como destino, perderemos la información del archivo destino:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+archivo_equis.txt
+tesis_final.docx
+
+$ cat archivo_equis.txt
+Este archivo contiene basura
+
+$ mv archivo_equis.txt tesis_final.docx
+
+$ ls
+tesis_final.docx
+
+$ cat tesis_final.docx
+Este archivo contiene basura
+</pre></div>
+</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rm">
+<h2><code class="code docutils literal notranslate"><span class="pre">rm</span></code><a class="headerlink" href="#rm" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Remove, elimina el archivo o directorio indicado</p>
+<blockquote>
+<div><div class="toggle admonition">
+<p class="admonition-title">Modos de operacion de <code class="code docutils literal notranslate"><span class="pre">rm</span></code></p>
+<ul>
+<li><p>elimina un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+mi_archivo.txt mi_nuevo_archivo.txt
+
+$ rm mi_archivo.txt
+
+$ ls
+mi_nuevo_archivo.txt
+</pre></div>
+</div>
+</li>
+<li><p>Elimina un directorio con todos sus elementos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+otro_directorio
+
+$ ls otro_directorio
+mi_archivo.txt
+
+$ rm -r otro_directorio
+
+$ ls otro_directorio
+ls: cannot access &#39;otro_directorio&#39;: No such file or directory
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p><code class="code docutils literal notranslate"><span class="pre">rm</span></code> es un comando destructivo, si se borran los archivos <strong>no son recuperables</strong></p>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cat">
+<h2><code class="code docutils literal notranslate"><span class="pre">cat</span></code><a class="headerlink" href="#cat" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Concatenate, nos muestra el contenido de un archivo, o archivos</p>
+</div>
+<div class="section" id="less">
+<h2><code class="code docutils literal notranslate"><span class="pre">less</span></code><a class="headerlink" href="#less" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Less nos muestra el contenido de un archivo, pero nos lo muestra, una pantalla a la vez</p>
+</div>
+<div class="section" id="head">
+<h2><code class="code docutils literal notranslate"><span class="pre">head</span></code><a class="headerlink" href="#head" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl>
+<dt>Head, nos da las primeras N líneas de un archivo</dt><dd><div class="toggle admonition">
+<p class="admonition-title">Modos de operación de <code class="code docutils literal notranslate"><span class="pre">head</span></code></p>
+<ul>
+<li><p>Muestra las primeras 10 líneas de un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ head snpEff_genes.txt
+# The following table is formatted as tab separated values.
+#GeneName       GeneId  TranscriptId    BioType variants_impact_HIGH    variants_impact_LOW     variants_impact_MODERATE        variants_impact_MODIFIER        variants_effect_3_prime_UTR_variant     variants_effect_5_prime_UTR_premature_start_codon_gain_variant  variants_effect_5_prime_UTR_variant     variants_effect_conservative_inframe_deletionvariants_effect_conservative_inframe_insertion     variants_effect_disruptive_inframe_deletion     variants_effect_disruptive_inframe_insertion    variants_effect_downstream_gene_variant variants_effect_frameshift_variant      variants_effect_intron_variant  variants_effect_missense_variant        variants_effect_non_coding_transcript_exon_variant      variants_effect_non_coding_transcript_variant   variants_effect_splice_acceptor_variant variants_effect_splice_donor_variant    variants_effect_splice_region_variantvariants_effect_start_lost variants_effect_stop_gained     variants_effect_stop_lost       variants_effect_stop_retained_variant   variants_effect_synonymous_variant      variants_effect_upstream_gene_variant
+A2M     ENSG00000175899 ENST00000318602 protein_coding  1       1       1       0       0       0       0       0       0       0       0       0       0       2       1       00      1       0       2       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000462568 retained_intron 0       1       0       1       0       0       0       0       0       0       0       0       0       1       0       00      0       0       1       0       0       0       0       0       1
+A2M     ENSG00000175899 ENST00000472360 retained_intron 0       0       0       2       0       0       0       0       0       0       0       2       0       0       0       00      0       0       0       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000543436 processed_transcript    0       1       0       2       0       0       0       0       0       0       0       0       0       1       00      0       0       0       1       0       0       0       0       0       2
+A2M     ENSG00000175899 ENST00000545828 processed_transcript    0       0       0       3       0       0       0       0       0       0       0       0       0       3       00      0       0       0       0       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000546069 nonsense_mediated_decay 1       0       0       3       1       0       0       0       0       0       0       1       0       1       01      0       1       0       1       0       0       0       0       0       0
+A4GALT  ENSG00000128274 ENST00000249005 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       00      0       0       0       0       0       0       0       2       0
+A4GALT  ENSG00000128274 ENST00000381278 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       00      0       0       0       0       0       0       0       2       0
+</pre></div>
+</div>
+</li>
+<li><p>Muestra las primeras 2 líneas de un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ head -n2 snpEff_genes.txt
+# The following table is formatted as tab separated values.
+#GeneName       GeneId  TranscriptId    BioType variants_impact_HIGH    variants_impact_LOW     variants_impact_MODERATE        variants_impact_MODIFIER        variants_effect_3_prime_UTR_variant     variants_effect_5_prime_UTR_premature_start_codon_gain_variant  variants_effect_5_prime_UTR_variant     variants_effect_conservative_inframe_deletionvariants_effect_conservative_inframe_insertion     variants_effect_disruptive_inframe_deletion     variants_effect_disruptive_inframe_insertion    variants_effect_downstream_gene_variant variants_effect_frameshift_variant      variants_effect_intron_variant  variants_effect_missense_variant        variants_effect_non_coding_transcript_exon_variant      variants_effect_non_coding_transcript_variant   variants_effect_splice_acceptor_variant variants_effect_splice_donor_variant    variants_effect_splice_region_variantvariants_effect_start_lost variants_effect_stop_gained     variants_effect_stop_lost       variants_effect_stop_retained_variant   variants_effect_synonymous_variant      variants_effect_upstream_gene_variant
+</pre></div>
+</div>
+</li>
+<li><p>Muestra las primeras líneas de un archivo exceptuando las ultimas 2 líneas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ head -n-2 snpEff_genes.txt
+&lt; Mucho output como para mostrarlo ;) &gt;
+ZSWIM8  ENSG00000214655 ENST00000605216 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8-AS1      ENSG00000272589 ENST00000456638         0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       0       1
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="tail">
+<h2><code class="code docutils literal notranslate"><span class="pre">tail</span></code><a class="headerlink" href="#tail" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Tail, nos da las últimas N líneas de un archivo</p>
+<div class="toggle admonition">
+<p class="admonition-title">Modos de operación de <code class="code docutils literal notranslate"><span class="pre">tail</span></code></p>
+<ul>
+<li><p>Muestra las últimas 10 líneas de un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tail snpEff_genes.txt
+ZSWIM8  ENSG00000214655 ENST00000603195 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000603309 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000603409 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000603840 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000604165 processed_transcript    0       0       0       1       0       0       0       0       0       0       0       1       0       0       00      0       0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000604524 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000604729 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000604754 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8  ENSG00000214655 ENST00000605216 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8-AS1      ENSG00000272589 ENST00000456638         0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       0       1
+</pre></div>
+</div>
+</li>
+<li><p>Muestra las últimas 2 lineas de un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tail -n2 snpEff_genes.txt
+ZSWIM8  ENSG00000214655 ENST00000605216 protein_coding  0       0       0       1       0       0       0       0       0       0       0       1       0       0       0       00      0       0       0       0       0       0       0       0       0
+ZSWIM8-AS1      ENSG00000272589 ENST00000456638         0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       00      0       0       0       0       0       0       0       0       1
+</pre></div>
+</div>
+</li>
+<li><p>Muestra las últimas líneas de un archivo exceptuando las primeras 2 líneas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tail -n+3 Homo_sapiens_GRCh38.fasta.fai
+A2M     ENSG00000175899 ENST00000318602 protein_coding  1       1       1       0       0       0       0       0       0       0       0       0       0       2       1       00      1       0       2       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000462568 retained_intron 0       1       0       1       0       0       0       0       0       0       0       0       0       1       0       00      0       0       1       0       0       0       0       0       1
+A2M     ENSG00000175899 ENST00000472360 retained_intron 0       0       0       2       0       0       0       0       0       0       0       2       0       0       0       00      0       0       0       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000543436 processed_transcript    0       1       0       2       0       0       0       0       0       0       0       0       0       1       00      0       0       0       1       0       0       0       0       0       2
+A2M     ENSG00000175899 ENST00000545828 processed_transcript    0       0       0       3       0       0       0       0       0       0       0       0       0       3       00      0       0       0       0       0       0       0       0       0       0
+A2M     ENSG00000175899 ENST00000546069 nonsense_mediated_decay 1       0       0       3       1       0       0       0       0       0       0       1       0       1       01      0       1       0       1       0       0       0       0       0       0
+A4GALT  ENSG00000128274 ENST00000249005 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       00      0       0       0       0       0       0       0       2       0
+A4GALT  ENSG00000128274 ENST00000381278 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       00      0       0       0       0       0       0       0       2       0
+A4GALT  ENSG00000128274 ENST00000401850 protein_coding  0       2       1       0       0       0       0       0       0       0       0       0       0       0       1       00      0       0       0       0       0       0       0       2       0
+A4GALT  ENSG00000128274 ENST00000465765 processed_transcript    0       0       0       3       0       0       0       0       0       0       0       3       0       0       00      0       0       0       0       0       0       0       0       0       0
+&lt; Y un montón más de output &gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="wc">
+<h2><code class="code docutils literal notranslate"><span class="pre">wc</span></code><a class="headerlink" href="#wc" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Word count, nos indica el número de líneas, palabras y caracteres de un archivo o de un <em>string</em></p>
+<div class="toggle admonition">
+<p class="admonition-title">Modos de operación de <code class="code docutils literal notranslate"><span class="pre">wc</span></code></p>
+<ul>
+<li><p>Nos da un resumen del contenido de un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc snpEff_genes.txt
+37200 1113368 3956494 snpEff_genes.txt
+</pre></div>
+</div>
+</li>
+<li><p>Cuenta el número de líneas en un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -l snpEff_genes.txt
+37200 snpEff_genes.txt
+</pre></div>
+</div>
+</li>
+<li><p>Cuenta el número de palabras en un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -w snpEff_genes.txt
+1113368 snpEff_genes.txt
+</pre></div>
+</div>
+</li>
+<li><p>Cuenta el número de caracteres en un archivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -c snpEff_genes.txt
+3956494 snpEff_genes.txt
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, @atgenomics, @vflorelo, @dianolasa, @zorbax
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .admonition-title").show();
+        $(".toggle .admonition-title").click(function() {
+            $(this).parent().children().not(".admonition-title").toggle(400);
+            $(this).parent().children(".admonition-title").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

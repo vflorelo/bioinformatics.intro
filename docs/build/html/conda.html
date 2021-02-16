@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>conda create -n ATGenomics &mdash; documentación de Call me by your reads - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Call me by your reads
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#"><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">ATGenomics</span></code></a></li>
+<li><a class="reference internal" href="#path-una-vez-mas-con-sentimiento"><code class="code docutils literal notranslate"><span class="pre">$PATH</span></code> una vez más, con sentimiento</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Call me by your reads</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">ATGenomics</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/conda.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conda-create-n-atgenomics">
+<h1><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">ATGenomics</span></code><a class="headerlink" href="#conda-create-n-atgenomics" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Actualmente las ciencias genómicas se mueven muy rapidamente, instalar y configurar programas ya no es una prioridad para hacer ciencia reproducible ya que existen gestores de paquetes que hacen la tarea por ti</p>
+<div class="toggle admonition">
+<p class="admonition-title">Distintos gestores de paquetes</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ubuntu &amp; Debian usan apt</p></li>
+<li><p>Fedora &amp; CentOS usan dnf</p></li>
+<li><p>Arch &amp; OpenSUSE pueden usar packman</p></li>
+<li><p>NodeJS usa npm</p></li>
+<li><p>Python usa pip</p></li>
+<li><p>Perl usa cpan</p></li>
+<li><p>R usa cran</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>A pesar de haber esfuerzos integrales para optimizar la gestión de paquetes, existen ecosistemas que no interactuan tan bien unos con otros, por ejemplo no puedes instalar paquetes deb con dnf, o rpm con apt.</p>
+<p>Entonces, para que el usuario se preocupe lo menos posible por la gestión de programas, podemos usar <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">conda</a></p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Conda es un gestor de paquetes que permite la creación de ambientes que aislan los programas y bibliotecas del resto del sistema (pero no son contenedores).</p>
+<p>Con conda puedes instalar facilmente programas con versiones específicas y en espacios específicos, por lo que puedes reproducir un protocolo con comandos muy simples.</p>
+</div>
+<p>En este taller emplearemos conda para instalar 3 herramientas:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc">FastQC</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lh3/bwa">bwa</a></p></li>
+<li><p><a class="reference external" href="https://github.com/samtools/samtools">samtools</a></p></li>
+</ul>
+<p>Pero primero debemos instalar conda, para ello, primero ingresamos a la instancia y ejecutamos los siguientes comandos, los ejecutaremos a la par que tú :)</p>
+<ol class="arabic">
+<li><p>Empezamos como siempre en nuestra carpeta <cite>$HOME</cite></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Descargamos el instalador de conda   (versión miniconda)</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Ejecutamos el instalador (aquí te esperamos para hacerlo a la par)</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bash Miniconda3-latest-Linux-x86_64.sh
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Para que los cambios surtan efecto, debemos reiniciar nuestra terminal ya que el archivo de control <cite>.bashrc</cite> fue modificado por conda para poder <em>saber</em> donde está ubicado el ejecutable y donde va a poder instalar programas y ambientes</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ exit
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Volvemos a ingresar a la instancia y esta vez notaremos que aparece una pista adicional en nuestra terminal: un cuadrito verde que dice «base» que nos indica 1) que estamos usando conda, y 2) que estamos en un ambiente «base»</p></li>
+<li><p>Posteriormente vamos a agregar <em>canales</em> a la configuración de conda, para que conda <em>sepa</em> de donde descargar los programas</p>
+<blockquote>
+<div><ul>
+<li><p>Agregamos canales default:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda config --add channels defaults
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Agregamos canales para bioinformática:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda config --add channels bioconda
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Agregamos canales para programas varios:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda config --add channels conda-forge
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Habiendo hecho esto, ahora si, creamos un nuevo entorno llamado gatk que va a contener los programas FastQC, bwa y samtools</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n gatk -c bioconda samtools bwa fastqc
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Activamos nuestro entorno para poder revisar los datos de secuenciación</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda activate gatk
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Al activar el entorno «gatk» veremos que nuestro prompt nos lo indica cambiando la bandera verde «base» a «gatk»</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>A partir de hoy, cada que ingreses a la instancia, recuerda verificar qué entornos tienes activados. Si no tienes activado el entorno <cite>gatk</cite> debes activarlo ejecutando <code class="code docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">gatk</span></code></p>
+</div>
+</div>
+<div class="section" id="path-una-vez-mas-con-sentimiento">
+<h1><code class="code docutils literal notranslate"><span class="pre">$PATH</span></code> una vez más, con sentimiento<a class="headerlink" href="#path-una-vez-mas-con-sentimiento" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Una parte de la configuración la realiza conda, no obstante también usaremos programas que no tienen receta de conda. Para que estos programas funcionen debemos configurar nuestro <cite>$PATH</cite></p>
+<ol class="arabic">
+<li><p>Creamos una carpeta donde van a vivir estos programas:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p $HOME/bin
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">Peligro</p>
+<p>Los siguientes pasos los debemos hacer <strong>una sóla</strong> vez</p>
+</div>
+<ol class="arabic" start="2">
+<li><p>Agregamos esta ruta al <cite>$PATH</cite> modificando el archivo <cite>.bashrc</cite></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;PATH=\$PATH:\$HOME/bin&quot; &gt;&gt; .bashrc
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Guardamos la variable para que el cambio sea persistente entre sesiones:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;export PATH&quot; &gt;&gt; .bashrc
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, @atgenomics, @vflorelo, @dianolasa, @zorbax
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .admonition-title").show();
+        $(".toggle .admonition-title").click(function() {
+            $(this).parent().children().not(".admonition-title").toggle(400);
+            $(this).parent().children(".admonition-title").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
