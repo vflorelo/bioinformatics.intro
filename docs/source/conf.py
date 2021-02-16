@@ -31,7 +31,7 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 # General information about the project.
-project   = "Call me by your reads"
+project   = "Bioinformatics Intro"
 copyright = "2021, @atgenomics, @vflorelo, @dianolasa, @zorbax"
 author    = "ATGenomics"
 # The version info for the project you're documenting, acts as replacement for
@@ -89,4 +89,4 @@ texinfo_documents = [(master_doc, "Call me by your reads", "Call me by your name
 def setup(app):
     app.add_css_file('custom.css')
 copybutton_prompt_text = "$ "
-copybutton_only_copy_prompt_lines = False
+copybutton_only_copy_prompt_lines = True
